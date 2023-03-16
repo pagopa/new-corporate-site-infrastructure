@@ -1,12 +1,22 @@
 env_short   = "d"
 environment = "dev"
 
+ecs_cms_image_version = "todo"
+
+public_dns_zones = {
+  "dev.pagopa.it" = {
+    comment = "Corporate website dev."
+  }
+}
+
+enable_apigw_https = false
+
 
 # Ref: https://pagopa.atlassian.net/wiki/spaces/DEVOPS/pages/132810155/Azure+-+Naming+Tagging+Convention#Tagging
 tags = {
   CreatedBy   = "Terraform"
   Environment = "Dev"
-  Owner       = "<name of the project>"
-  Source      = "<git repo url>"
-  CostCenter  = "<eg: TS310 - PAGAMENTI e SERVIZI>"
+  Owner       = "PagoPa corporate website."
+  Source      = "https://github.com/pagopa/new-corporate-site-infrastructure.git"
+  CostCenter  = "TS310 - PAGAMENTI e SERVIZI"
 }
