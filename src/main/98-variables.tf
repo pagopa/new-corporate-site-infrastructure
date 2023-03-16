@@ -65,11 +65,12 @@ variable "dns_record_ttl" {
   default     = 86400 # 24 hours
 }
 
-variable "create_cert_validation_records" {
+variable "enable_apigw_https" {
   type        = bool
-  description = "Create dns certification validation records."
+  description = "Enable ApiGw https support: the TLS certificate must be issued and verified."
   default     = true
 }
+
 
 ## ECS
 variable "logs_tasks_retention" {

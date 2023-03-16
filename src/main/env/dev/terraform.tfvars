@@ -1,6 +1,16 @@
 env_short   = "d"
 environment = "dev"
 
+ecs_cms_image_version = "todo"
+
+public_dns_zones = {
+  "dev.pagopa.it" = {
+    comment = "Corporate website dev."
+  }
+}
+
+enable_apigw_https = false
+
 
 # Ref: https://pagopa.atlassian.net/wiki/spaces/DEVOPS/pages/132810155/Azure+-+Naming+Tagging+Convention#Tagging
 tags = {

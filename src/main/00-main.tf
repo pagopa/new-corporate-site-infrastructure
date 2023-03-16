@@ -18,8 +18,14 @@ provider "aws" {
   }
 }
 
-locals {
-  project = format("%s-%s", var.app_name, var.env_short)
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+
+  default_tags {
+    tags = var.tags
+  }
+
 }
 
 data "aws_caller_identity" "current" {}
