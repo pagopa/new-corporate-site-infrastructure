@@ -8,9 +8,11 @@ output "strapi_user_secret_key" {
   sensitive = true
 }
 
+/*
 output "deploy_ecs_role_arn" {
   value = aws_iam_role.deploy_ecs.arn
 }
+*/
 
 output "deploy_website_role_arn" {
   value = aws_iam_role.deploy_website.arn
@@ -36,9 +38,11 @@ output "preview_fqdn" {
 }
 */
 
+/*
 output "cms_fqdn" {
   value = try(aws_route53_record.cms.fqdn, null)
 }
+*/
 
 ## Database
 output "db_cluster_database_name" {
@@ -65,6 +69,7 @@ output "db_cluster_master_password" {
 
 
 ## Alb
+/*
 output "alb_cms_dns_name" {
   value = module.alb_cms.lb_dns_name
 }
@@ -106,10 +111,13 @@ output "cdn_website_id" {
   value = aws_cloudfront_distribution.website.id
 }
 
+/*
 output "cdn_preview_domain_name" {
   value = aws_cloudfront_distribution.preview.domain_name
 }
 
+
 output "cdn_preview_id" {
   value = aws_cloudfront_distribution.preview.id
 }
+*/
