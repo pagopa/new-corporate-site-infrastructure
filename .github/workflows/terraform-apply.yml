@@ -25,7 +25,7 @@ on:
         default: dev
         options:
         - dev
-        - uat
+        - prod
 
 
 jobs:
@@ -63,7 +63,7 @@ jobs:
       strategy:
         max-parallel: 1
         matrix:
-          environment: [dev, uat, prod_w]
+          environment: [dev]
       runs-on: ubuntu-latest
       continue-on-error: false
       environment: ${{ matrix.environment }}
