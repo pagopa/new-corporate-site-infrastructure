@@ -14,8 +14,10 @@ module "vpc" {
   public_subnet_suffix  = "public"
   database_subnets      = var.vpc_database_subnets_cidr
   enable_nat_gateway    = var.enable_nat_gateway
+  single_nat_gateway    = var.single_nat_gateway
 
   enable_dns_hostnames = true
   enable_dns_support   = true
 
 }
+
