@@ -22,6 +22,9 @@ variable "env_short" {
   description = "Evnironment short."
 }
 
+################
+## Networking ##
+###############
 variable "vpc_cidr" {
   type        = string
   default     = "10.0.0.0/16"
@@ -49,7 +52,13 @@ variable "vpc_database_subnets_cidr" {
 variable "enable_nat_gateway" {
   type        = bool
   description = "Enable/Create nat gateway"
-  default     = false
+  default     = true
+}
+
+variable "single_nat_gateway" {
+  type        = bool
+  description = "Single natgateway instance."
+  default     = true
 }
 
 ## Public Dns zones
@@ -65,41 +74,20 @@ variable "dns_record_ttl" {
   default     = 86400 # 24 hours
 }
 
-variable "enable_apigw_https" {
+variable "enable_cdn_https" {
   type        = bool
   description = "Enable ApiGw https support: the TLS certificate must be issued and verified."
   default     = true
 }
 
 
-## ECS
-variable "logs_tasks_retention" {
-  type        = number
-  description = "Days to retain a log stream."
-  default     = 7
-}
-
+###############
+## Computing ##
+##############
 variable "logs_lambda_retention" {
   type        = number
   description = "Days to retain the log stream."
   default     = 7
-}
-
-variable "ecs_enable_execute_command" {
-  type        = bool
-  description = "Enable to execute command inside ECS container for debugging."
-  default     = false
-}
-
-variable "ecs_cms_image" {
-  type        = string
-  description = "cms docker image"
-  default     = "ghcr.io/pagopa/cms-pn-backend"
-}
-
-variable "ecs_cms_image_version" {
-  type        = string
-  description = "Cms image to deploy"
 }
 
 variable "cms_github_repository" {
@@ -113,6 +101,16 @@ variable "fe_github_repository" {
   description = "Fe repository"
   default     = "pagopa/corporate-site-fe"
 }
+
+variable "ecr_keep_nr_images" {
+  type        = number
+  description = "Number of images to keep in ECR repository."
+  default     = 3
+}
+
+##############
+## Database ##
+#############
 
 variable "db_backup_retention_period" {
   type        = number
@@ -143,6 +141,8 @@ variable "db_stop_schedule_expression" {
   description = "When the rds db aurora should start."
   default     = "cron(0 19 ? * MON-FRI *)" # UTC
 }
+
+
 
 variable "tags" {
   type = map(any)

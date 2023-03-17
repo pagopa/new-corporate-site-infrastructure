@@ -9,7 +9,7 @@ public_dns_zones = {
   }
 }
 
-enable_apigw_https = false
+enable_cdn_https = false
 
 
 # Ref: https://pagopa.atlassian.net/wiki/spaces/DEVOPS/pages/132810155/Azure+-+Naming+Tagging+Convention#Tagging
