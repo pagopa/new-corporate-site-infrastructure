@@ -58,6 +58,8 @@
 | [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_security_group_rule.app_runner_to_rds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.database_password](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
 | [random_integer.bucket_cms_media](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer) | resource |
 | [random_password.cms_api_keys](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.cms_api_token_salt](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
@@ -104,6 +106,7 @@
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
 | <a name="output_cdn_website_id"></a> [cdn\_website\_id](#output\_cdn\_website\_id) | n/a |
+| <a name="output_cms_service_url"></a> [cms\_service\_url](#output\_cms\_service\_url) | n/a |
 | <a name="output_db_cluster_database_name"></a> [db\_cluster\_database\_name](#output\_db\_cluster\_database\_name) | # Database |
 | <a name="output_db_cluster_endpoint"></a> [db\_cluster\_endpoint](#output\_db\_cluster\_endpoint) | n/a |
 | <a name="output_db_cluster_master_password"></a> [db\_cluster\_master\_password](#output\_db\_cluster\_master\_password) | n/a |

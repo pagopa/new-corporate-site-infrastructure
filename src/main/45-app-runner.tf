@@ -40,19 +40,24 @@ module "app-runner" {
   }
 
   # IAM instance profile permissions to access secrets
-  /* TODO
+
   instance_policy_statements = {
-    GetSecretValue = {
-      actions   = ["secretsmanager:GetSecretValue"]
-      resources = [aws_secretsmanager_secret.this.arn]
+    GetParameter = {
+      actions   = ["ssm:GetParameter", "ssm:GetParameters"]
+      resources = [aws_ssm_parameter.database_password.arn]
     }
 
-    GetParameter = {
-      actions = ["ssm:GetParameter"]
-      resources = ["*"]
+    PublishAssets = {
+      actions = ["s3:DeleteObject",
+        "s3:GetObject",
+        "s3:GetObjectAttributes",
+        "s3:ListBucket",
+        "s3:PutObject",
+      ]
+      resources = [aws_s3_bucket.cms_media.arn]
     }
   }
-  */
+
 
   source_configuration = {
     auto_deployments_enabled = false
@@ -71,7 +76,6 @@ module "app-runner" {
           DATABASE_NAME     = module.aurora_postgresql.cluster_database_name
           DATABASE_USERNAME = module.aurora_postgresql.cluster_master_username
           #TODO: try to set this as secret
-          DATABASE_PASSWORD = module.aurora_postgresql.cluster_master_password
           DATABASE_SSL      = "false"
           AWS_ACCESS_KEY_ID = aws_iam_access_key.strapi.id
           AWS_ACCESS_SECRET = aws_iam_access_key.strapi.secret
@@ -80,15 +84,16 @@ module "app-runner" {
           CDN_BASE_URL      = format("https://%s", aws_cloudfront_distribution.media.domain_name)
           BUCKET_PREFIX     = "media"
         }
-        /*
+
         runtime_environment_secrets = {
-          GOOGLE_OAUTH_CLIENT_ID     = "TODO"
-          GOOGLE_OAUTH_CLIENT_SECRET = "TODO"
-          GOOGLE_OAUTH_REDIRECT_URI  = "TODO"
-          GITHUB_TOKEN               = "TODO"
-          GITHUB_WEBHOOK             = "TODO"
+          DATABASE_PASSWORD = "DB_PASSWORD"
+          #GOOGLE_OAUTH_CLIENT_ID     = "TODO"
+          #GOOGLE_OAUTH_CLIENT_SECRET = "TODO"
+          #GOOGLE_OAUTH_REDIRECT_URI  = "TODO"
+          #GITHUB_TOKEN               = "TODO"
+          #GITHUB_WEBHOOK             = "TODO"
         }
-        */
+
       }
       image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
       image_repository_type = "ECR_PUBLIC"
@@ -108,5 +113,18 @@ module "app-runner" {
   }
 
   enable_observability_configuration = true
+
+}
+
+
+## Allow access to rds
+
+resource "aws_security_group_rule" "app_runner_to_rds" {
+  type                     = "ingress"
+  from_port                = module.aurora_postgresql.cluster_port
+  to_port                  = module.aurora_postgresql.cluster_port
+  protocol                 = "tcp"
+  security_group_id        = module.aurora_postgresql.security_group_id
+  source_security_group_id = module.security_group.security_group_id
 
 }
