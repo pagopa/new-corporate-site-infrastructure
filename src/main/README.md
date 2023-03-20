@@ -17,12 +17,16 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_app-runner"></a> [app-runner](#module\_app-runner) | terraform-aws-modules/app-runner/aws | 1.2.0 |
 | <a name="module_aurora_postgresql"></a> [aurora\_postgresql](#module\_aurora\_postgresql) | terraform-aws-modules/rds-aurora/aws | 7.3.0 |
 | <a name="module_dns_zone"></a> [dns\_zone](#module\_dns\_zone) | terraform-aws-modules/route53/aws//modules/zones | = 2.0 |
 | <a name="module_eventbridge"></a> [eventbridge](#module\_eventbridge) | terraform-aws-modules/eventbridge/aws | 1.17.3 |
 | <a name="module_lambda_function"></a> [lambda\_function](#module\_lambda\_function) | terraform-aws-modules/lambda/aws | 4.7.1 |
 | <a name="module_preview_bucket"></a> [preview\_bucket](#module\_preview\_bucket) | ./modules/private_bucket |  |
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | terraform-aws-modules/security-group/aws | = 4.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.19.0 |
+| <a name="module_vpc_endpoints"></a> [vpc\_endpoints](#module\_vpc\_endpoints) | terraform-aws-modules/vpc/aws//modules/vpc-endpoints | 3.19.0 |
+| <a name="module_vpc_endpoints_security_group"></a> [vpc\_endpoints\_security\_group](#module\_vpc\_endpoints\_security\_group) | terraform-aws-modules/security-group/aws | = 4.0 |
 | <a name="module_website_bucket"></a> [website\_bucket](#module\_website\_bucket) | ./modules/private_bucket |  |
 
 ## Resources
@@ -55,6 +59,9 @@
 | [aws_s3_bucket_public_access_block.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_versioning) | resource |
 | [random_integer.bucket_cms_media](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer) | resource |
+| [random_password.cms_api_keys](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.cms_api_token_salt](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.jwt_secrets](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy.admin_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |

@@ -136,7 +136,7 @@ resource "aws_cloudfront_distribution" "website" {
   viewer_certificate {
     cloudfront_default_certificate = var.enable_cdn_https ? false : true
     acm_certificate_arn            = var.enable_cdn_https ? aws_acm_certificate.website.arn : null
-    ssl_support_method             = "sni-only"
+    # ssl_support_method             = "sni-only"
   }
 }
 

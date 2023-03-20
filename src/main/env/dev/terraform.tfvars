@@ -1,7 +1,7 @@
 env_short   = "d"
 environment = "dev"
 
-ecs_cms_image_version = "todo"
+# ecs_cms_image_version = "todo"
 
 public_dns_zones = {
   "dev.pagopa.it" = {

@@ -21,3 +21,49 @@ module "vpc" {
 
 }
 
+module "security_group" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "= 4.0"
+
+  name        = "App runner connector"
+  description = "Security group for AppRunner connector"
+  vpc_id      = module.vpc.vpc_id
+
+  egress_rules       = ["http-80-tcp"]
+  egress_cidr_blocks = module.vpc.private_subnets_cidr_blocks
+
+}
+
+
+module "vpc_endpoints_security_group" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "= 4.0"
+
+  name        = "cms-vpc-endpoints"
+  description = "Security group for VPC Endpoints"
+  vpc_id      = module.vpc.vpc_id
+
+  egress_rules       = ["https-443-tcp"]
+  egress_cidr_blocks = [module.vpc.vpc_cidr_block]
+
+}
+
+
+
+module "vpc_endpoints" {
+  source  = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
+  version = "3.19.0"
+
+  vpc_id             = module.vpc.vpc_id
+  security_group_ids = [module.vpc_endpoints_security_group.security_group_id]
+
+  endpoints = {
+    apprunner = {
+      service = "apprunner.requests"
+      # private_dns_enabled = true
+      subnet_ids = module.vpc.private_subnets
+      tags       = { Name = "cms-apprunner" }
+    },
+  }
+
+}
