@@ -115,3 +115,16 @@ module "app-runner" {
   enable_observability_configuration = true
 
 }
+
+
+## Allow access to rds
+
+resource "aws_security_group_rule" "app_runner_to_rds" {
+  type                     = "ingress"
+  from_port                = module.aurora_postgresql.cluster_port
+  to_port                  = module.aurora_postgresql.cluster_port
+  protocol                 = "tcp"
+  security_group_id        = module.aurora_postgresql.security_group_id
+  source_security_group_id = module.security_group.security_group_id
+
+}
