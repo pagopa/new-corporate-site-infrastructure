@@ -62,3 +62,10 @@ module "aurora_postgresql" {
   }
 }
 
+resource "aws_ssm_parameter" "database_password" {
+  name  = "DB_PASSWORD"
+  type  = "SecureString"
+  value = module.aurora_postgresql.cluster_master_password
+}
+
+
