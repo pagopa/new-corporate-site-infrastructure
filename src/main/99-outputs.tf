@@ -67,6 +67,10 @@ output "db_cluster_master_password" {
   sensitive = true
 }
 
+output "cms_service_url" {
+  value = module.app-runner.service_url
+}
+
 
 ## Alb
 /*

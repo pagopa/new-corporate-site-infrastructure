@@ -46,6 +46,11 @@ module "app-runner" {
       actions   = ["secretsmanager:GetSecretValue"]
       resources = [aws_secretsmanager_secret.this.arn]
     }
+
+    GetParameter = {
+      actions = ["ssm:GetParameter"]
+      resources = ["*"]
+    }
   }
   */
 
