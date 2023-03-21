@@ -105,7 +105,7 @@ module "app-runner" {
 
   create_vpc_connector          = true
   vpc_connector_subnets         = module.vpc.private_subnets
-  vpc_connector_security_groups = [module.security_group.security_group_id, module.security_group_to_psql.security_group_id]
+  vpc_connector_security_groups = [module.security_group.security_group_id, ]
   network_configuration = {
     ingress_configuration = {
       is_publicly_accessible = true

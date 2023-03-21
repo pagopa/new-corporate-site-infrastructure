@@ -46,8 +46,11 @@
 | [aws_iam_policy.rdsstopstart](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.upload_image](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy_attachment.strapi-policy](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_policy_attachment) | resource |
+| [aws_iam_role.deploy_ecs](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.deploy_website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.githubdeploy](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.lambdastopstartrds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.deploy_ec2_ecr_full_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.deploy_website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lambdastopstartrds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_user.strapi](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_user) | resource |
@@ -67,6 +70,7 @@
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy.admin_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |
+| [aws_iam_policy.ec2_ecr_full_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy_document.s3_policy_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_rds_engine_version.postgresql](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/rds_engine_version) | data source |
 
@@ -77,6 +81,7 @@
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | Corporate website. | `string` | `"website"` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region to create resources. Default Milan | `string` | `"eu-central-1"` | no |
 | <a name="input_cms_github_repository"></a> [cms\_github\_repository](#input\_cms\_github\_repository) | github repository with CMS codebase in the form organisation/repository. | `string` | `"pagopa/cms-corporate-backend"` | no |
+| <a name="input_cms_image_version"></a> [cms\_image\_version](#input\_cms\_image\_version) | Tag image version to deploy | `string` | `"latest"` | no |
 | <a name="input_db_backup_retention_period"></a> [db\_backup\_retention\_period](#input\_db\_backup\_retention\_period) | The days to retain backups for. Default 7 | `number` | `7` | no |
 | <a name="input_db_preferred_backup_window"></a> [db\_preferred\_backup\_window](#input\_db\_preferred\_backup\_window) | The daily time range during which automated backups are created. | `string` | `"17:00-19:00"` | no |
 | <a name="input_db_start_schedule_expression"></a> [db\_start\_schedule\_expression](#input\_db\_start\_schedule\_expression) | When the rds db aurora should start. | `string` | `"cron(0 8 ? * MON-FRI *)"` | no |
@@ -112,7 +117,10 @@
 | <a name="output_db_cluster_master_password"></a> [db\_cluster\_master\_password](#output\_db\_cluster\_master\_password) | n/a |
 | <a name="output_db_cluster_master_username"></a> [db\_cluster\_master\_username](#output\_db\_cluster\_master\_username) | n/a |
 | <a name="output_db_cluster_port"></a> [db\_cluster\_port](#output\_db\_cluster\_port) | n/a |
+| <a name="output_deploy_cms_role_arn"></a> [deploy\_cms\_role\_arn](#output\_deploy\_cms\_role\_arn) | n/a |
 | <a name="output_deploy_website_role_arn"></a> [deploy\_website\_role\_arn](#output\_deploy\_website\_role\_arn) | n/a |
+| <a name="output_ecr_repository_name"></a> [ecr\_repository\_name](#output\_ecr\_repository\_name) | n/a |
+| <a name="output_ecr_repository_url"></a> [ecr\_repository\_url](#output\_ecr\_repository\_url) | n/a |
 | <a name="output_image_s3_bucket"></a> [image\_s3\_bucket](#output\_image\_s3\_bucket) | # Storage |
 | <a name="output_preview_s3_bucket"></a> [preview\_s3\_bucket](#output\_preview\_s3\_bucket) | n/a |
 | <a name="output_public_dns_servers"></a> [public\_dns\_servers](#output\_public\_dns\_servers) | n/a |
