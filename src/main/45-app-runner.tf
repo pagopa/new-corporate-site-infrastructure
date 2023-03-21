@@ -117,6 +117,15 @@ module "app-runner" {
 
   enable_observability_configuration = true
 
+  health_check_configuration = {
+    healthy_threshold   = 1
+    interval            = 5
+    path                = "/"
+    protocol            = "TCP"
+    timeout             = 2
+    unhealthy_threshold = 5
+  }
+
 }
 
 ## Allow access to rds
@@ -127,5 +136,4 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
   protocol                 = "tcp"
   security_group_id        = module.aurora_postgresql.security_group_id
   source_security_group_id = module.security_group.security_group_id
-
 }
