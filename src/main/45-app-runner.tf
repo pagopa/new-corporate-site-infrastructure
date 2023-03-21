@@ -18,7 +18,6 @@ resource "random_password" "jwt_secrets" {
   lower   = false
 }
 
-
 module "app-runner" {
   source  = "terraform-aws-modules/app-runner/aws"
   version = "1.2.0"
@@ -60,12 +59,16 @@ module "app-runner" {
 
 
   source_configuration = {
+
+    authentication_configuration = {
+      access_role_arn = "arn:aws:iam::937305744804:role/service-role/AppRunnerECRAccessRole"
+    }
+
     auto_deployments_enabled = false
     image_repository = {
       image_configuration = {
-        port = 8000
+        port = 1337
         runtime_environment_variables = {
-          MY_VARIABLE       = "hello!"
           APP_KEYS          = join(", ", random_password.cms_api_keys.*.result)
           API_TOKEN_SALT    = random_password.cms_api_token_salt.result
           ADMIN_JWT_SECRET  = random_password.jwt_secrets[0].result
@@ -95,8 +98,8 @@ module "app-runner" {
         }
 
       }
-      image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = join(":", [aws_ecr_repository.main.repository_url, var.cms_image_version])
+      image_repository_type = "ECR"
     }
   }
 
@@ -116,9 +119,7 @@ module "app-runner" {
 
 }
 
-
 ## Allow access to rds
-
 resource "aws_security_group_rule" "app_runner_to_rds" {
   type                     = "ingress"
   from_port                = module.aurora_postgresql.cluster_port

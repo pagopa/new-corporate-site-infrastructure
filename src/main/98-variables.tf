@@ -102,6 +102,12 @@ variable "fe_github_repository" {
   default     = "pagopa/corporate-site-fe"
 }
 
+variable "cms_image_version" {
+  type        = string
+  description = "Tag image version to deploy"
+  default     = "latest"
+}
+
 variable "ecr_keep_nr_images" {
   type        = number
   description = "Number of images to keep in ECR repository."
