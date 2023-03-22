@@ -72,6 +72,7 @@
 | [aws_iam_policy.admin_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy.ec2_ecr_full_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy_document.s3_policy_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_role.app_runner_ecr_access_role](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_role) | data source |
 | [aws_rds_engine_version.postgresql](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/rds_engine_version) | data source |
 
 ## Inputs

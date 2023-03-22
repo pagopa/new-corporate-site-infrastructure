@@ -18,6 +18,10 @@ resource "random_password" "jwt_secrets" {
   lower   = false
 }
 
+data "aws_iam_role" "app_runner_ecr_access_role" {
+  name = "AppRunnerECRAccessRole"
+}
+
 module "app-runner" {
   source  = "terraform-aws-modules/app-runner/aws"
   version = "1.2.0"
@@ -61,7 +65,7 @@ module "app-runner" {
   source_configuration = {
 
     authentication_configuration = {
-      access_role_arn = "arn:aws:iam::937305744804:role/service-role/AppRunnerECRAccessRole"
+      access_role_arn = data.aws_iam_role.app_runner_ecr_access_role.arn
     }
 
     auto_deployments_enabled = false
