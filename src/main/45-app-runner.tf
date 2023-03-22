@@ -83,14 +83,17 @@ module "app-runner" {
           DATABASE_NAME     = module.aurora_postgresql.cluster_database_name
           DATABASE_USERNAME = module.aurora_postgresql.cluster_master_username
           #TODO: try to set this as secret
-          DATABASE_SSL              = "false"
-          AWS_ACCESS_KEY_ID         = aws_iam_access_key.strapi.id
-          AWS_ACCESS_SECRET         = aws_iam_access_key.strapi.secret
-          AWS_BUCKET_NAME           = aws_s3_bucket.cms_media.id
-          AWS_REGION                = var.aws_region
-          CDN_BASE_URL              = format("https://%s", aws_cloudfront_distribution.media.domain_name)
-          BUCKET_PREFIX             = "media"
-          GOOGLE_OAUTH_REDIRECT_URI = join("/", [module.app-runner.service_url, "strapi-plugin-sso", "googl", "callback"])
+          DATABASE_SSL      = "false"
+          AWS_ACCESS_KEY_ID = aws_iam_access_key.strapi.id
+          AWS_ACCESS_SECRET = aws_iam_access_key.strapi.secret
+          AWS_BUCKET_NAME   = aws_s3_bucket.cms_media.id
+          AWS_REGION        = var.aws_region
+          CDN_BASE_URL      = format("https://%s", aws_cloudfront_distribution.media.domain_name)
+          BUCKET_PREFIX     = "media"
+          GOOGLE_OAUTH_REDIRECT_URI = join("/", [
+            format("https://cms.%s", keys(var.public_dns_zones)[0]),
+            "strapi-plugin-sso", "google", "callback"]
+          )
         }
 
         runtime_environment_secrets = {
