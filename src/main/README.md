@@ -19,7 +19,6 @@
 |------|--------|---------|
 | <a name="module_app-runner"></a> [app-runner](#module\_app-runner) | terraform-aws-modules/app-runner/aws | 1.2.0 |
 | <a name="module_aurora_postgresql"></a> [aurora\_postgresql](#module\_aurora\_postgresql) | terraform-aws-modules/rds-aurora/aws | 7.3.0 |
-| <a name="module_dns_zone"></a> [dns\_zone](#module\_dns\_zone) | terraform-aws-modules/route53/aws//modules/zones | = 2.0 |
 | <a name="module_eventbridge"></a> [eventbridge](#module\_eventbridge) | terraform-aws-modules/eventbridge/aws | 1.17.3 |
 | <a name="module_lambda_function"></a> [lambda\_function](#module\_lambda\_function) | terraform-aws-modules/lambda/aws | 4.7.1 |
 | <a name="module_preview_bucket"></a> [preview\_bucket](#module\_preview\_bucket) | ./modules/private_bucket |  |
@@ -33,6 +32,7 @@
 
 | Name | Type |
 |------|------|
+| [aws_acm_certificate.cms](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_cloudfront_distribution.media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
@@ -55,8 +55,6 @@
 | [aws_iam_role_policy_attachment.lambdastopstartrds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_user.strapi](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_user) | resource |
 | [aws_rds_cluster_parameter_group.postgresql14](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/rds_cluster_parameter_group) | resource |
-| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/route53_record) | resource |
 | [aws_s3_bucket.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_public_access_block) | resource |
@@ -112,6 +110,7 @@
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
 | <a name="output_cdn_website_id"></a> [cdn\_website\_id](#output\_cdn\_website\_id) | n/a |
+| <a name="output_cms_acm_certificate_validation_options"></a> [cms\_acm\_certificate\_validation\_options](#output\_cms\_acm\_certificate\_validation\_options) | n/a |
 | <a name="output_cms_service_url"></a> [cms\_service\_url](#output\_cms\_service\_url) | n/a |
 | <a name="output_db_cluster_database_name"></a> [db\_cluster\_database\_name](#output\_db\_cluster\_database\_name) | # Database |
 | <a name="output_db_cluster_endpoint"></a> [db\_cluster\_endpoint](#output\_db\_cluster\_endpoint) | n/a |
@@ -124,8 +123,6 @@
 | <a name="output_ecr_repository_url"></a> [ecr\_repository\_url](#output\_ecr\_repository\_url) | n/a |
 | <a name="output_image_s3_bucket"></a> [image\_s3\_bucket](#output\_image\_s3\_bucket) | # Storage |
 | <a name="output_preview_s3_bucket"></a> [preview\_s3\_bucket](#output\_preview\_s3\_bucket) | n/a |
-| <a name="output_public_dns_servers"></a> [public\_dns\_servers](#output\_public\_dns\_servers) | n/a |
-| <a name="output_public_dns_zone_name"></a> [public\_dns\_zone\_name](#output\_public\_dns\_zone\_name) | DNS Zone |
 | <a name="output_strapi_user_access_key"></a> [strapi\_user\_access\_key](#output\_strapi\_user\_access\_key) | # Iam |
 | <a name="output_strapi_user_secret_key"></a> [strapi\_user\_secret\_key](#output\_strapi\_user\_secret\_key) | n/a |
 | <a name="output_vpc_cidr"></a> [vpc\_cidr](#output\_vpc\_cidr) | Network |

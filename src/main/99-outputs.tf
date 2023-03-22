@@ -8,11 +8,9 @@ output "strapi_user_secret_key" {
   sensitive = true
 }
 
-
 output "deploy_cms_role_arn" {
   value = aws_iam_role.githubdeploy.arn
 }
-
 
 output "deploy_website_role_arn" {
   value = aws_iam_role.deploy_website.arn
@@ -22,27 +20,6 @@ output "deploy_website_role_arn" {
 output "vpc_cidr" {
   value = module.vpc.vpc_cidr_block
 }
-
-# DNS Zone
-output "public_dns_zone_name" {
-  value = try(module.dns_zone[0].route53_zone_name, null)
-}
-
-output "public_dns_servers" {
-  value = try(module.dns_zone[0].route53_zone_name_servers, null)
-}
-
-/*
-output "preview_fqdn" {
-  value = aws_route53_record.preview.fqdn
-}
-*/
-
-/*
-output "cms_fqdn" {
-  value = try(aws_route53_record.cms.fqdn, null)
-}
-*/
 
 ## Database
 output "db_cluster_database_name" {
@@ -80,20 +57,6 @@ output "ecr_repository_name" {
 output "ecr_repository_url" {
   value = aws_ecr_repository.main.repository_url
 }
-
-
-## Alb
-/*
-output "alb_cms_dns_name" {
-  value = module.alb_cms.lb_dns_name
-}
-
-/*
-output "alb_fe_dns_name" {
-  value       = module.alb_fe.lb_dns_name
-  description = "Preview frontend."
-}
-*/
 
 ## Storage
 output "image_s3_bucket" {
@@ -135,3 +98,17 @@ output "cdn_preview_id" {
   value = aws_cloudfront_distribution.preview.id
 }
 */
+
+
+## TLS Certificate Validation oprions
+
+output "cms_acm_certificate_validation_options" {
+
+  value = { for dvo in aws_acm_certificate.cms.domain_validation_options : dvo.domain_name => {
+    name   = dvo.resource_record_name
+    record = dvo.resource_record_value
+    type   = dvo.resource_record_type
+  } }
+
+
+}
