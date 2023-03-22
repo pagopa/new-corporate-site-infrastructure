@@ -12,6 +12,19 @@ resource "aws_iam_access_key" "strapi" {
   user = aws_iam_user.strapi.name
 }
 
+resource "aws_ssm_parameter" "strapi_iam_access_key_id" {
+  name  = "STRAPI_IAM_ACCESS_KEY_ID"
+  type  = "SecureString"
+  value = aws_iam_access_key.strapi.id
+}
+
+resource "aws_ssm_parameter" "strapi_iam_access_secret" {
+  name  = "STRAPI_IAM_ACCESS_SECRET"
+  type  = "SecureString"
+  value = aws_iam_access_key.strapi.secret
+}
+
+
 
 resource "aws_iam_policy" "upload_image" {
   name        = "S3UploadImages"
