@@ -90,13 +90,16 @@ module "app-runner" {
           AWS_REGION        = var.aws_region
           CDN_BASE_URL      = format("https://%s", aws_cloudfront_distribution.media.domain_name)
           BUCKET_PREFIX     = "media"
+          GOOGLE_OAUTH_REDIRECT_URI = join("/", [
+            format("https://cms.%s", keys(var.public_dns_zones)[0]),
+            "strapi-plugin-sso", "google", "callback"]
+          )
         }
 
         runtime_environment_secrets = {
-          DATABASE_PASSWORD = "DB_PASSWORD"
-          #GOOGLE_OAUTH_CLIENT_ID     = "TODO"
-          #GOOGLE_OAUTH_CLIENT_SECRET = "TODO"
-          #GOOGLE_OAUTH_REDIRECT_URI  = "TODO"
+          DATABASE_PASSWORD          = "DB_PASSWORD"
+          GOOGLE_OAUTH_CLIENT_ID     = "GOOGLE_OAUTH_CLIENT_ID"
+          GOOGLE_OAUTH_CLIENT_SECRET = "GOOGLE_OAUTH_CLIENT_SECRET"
           #GITHUB_TOKEN               = "TODO"
           #GITHUB_WEBHOOK             = "TODO"
         }
