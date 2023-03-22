@@ -45,7 +45,7 @@ resource "aws_iam_policy_attachment" "strapi-policy" {
 }
 
 ## Deploy role
-/*
+
 resource "aws_iam_role" "deploy_ecs" {
   name        = "GitHubActionDeployECS"
   description = "Role to assume to deploy on ECS."
@@ -74,48 +74,46 @@ resource "aws_iam_role" "deploy_ecs" {
   })
 }
 
-resource "aws_iam_policy" "deploy_ecs" {
-  name        = "PagoPaECSDeploy"
-  description = "Policy to allow deploy on ECS."
+## Deploy with github action
+resource "aws_iam_role" "githubdeploy" {
+  name        = "GitHubDeploy"
+  description = "Role to assume to push and build images in ECR."
 
-  policy = jsonencode(
-    {
-      "Version" : "2012-10-17",
-      "Statement" : [
-        {
-          "Action" : [
-            "ecs:DescribeTaskDefinition",
-            "ecs:DescribeTaskDefinition",
-            "ecs:RegisterTaskDefinition",
-            "ecs:DescribeServices",
-            "ecs:UpdateService"
-          ],
-          "Effect" : "Allow",
-          "Resource" : [
-            "*"
-          ],
-          "Sid" : "ECSDeploy"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          "Federated" : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
         },
-        {
-          "Action" : [
-            "iam:PassRole"
-          ],
-          "Effect" : "Allow",
-          "Resource" : [
-            "${aws_iam_role.task_cms_execution.arn}"
-          ]
+        Action = "sts:AssumeRoleWithWebIdentity",
+        Condition = {
+          StringLike = {
+            "token.actions.githubusercontent.com:sub" : [
+              "repo:${var.cms_github_repository}:*"
+            ]
+          },
+          "ForAllValues:StringEquals" = {
+            "token.actions.githubusercontent.com:iss" : "https://token.actions.githubusercontent.com",
+            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com"
+          }
         }
-      ],
-    }
-  )
+      }
+    ]
+  })
 }
 
-resource "aws_iam_role_policy_attachment" "deploy_ecs" {
-  role       = aws_iam_role.deploy_ecs.name
-  policy_arn = aws_iam_policy.deploy_ecs.arn
+# TODO: restrict this policy with a custom one.
+data "aws_iam_policy" "ec2_ecr_full_access" {
+  name = "AmazonEC2ContainerRegistryFullAccess"
 }
-*/
 
+resource "aws_iam_role_policy_attachment" "deploy_ec2_ecr_full_access" {
+  role       = aws_iam_role.githubdeploy.name
+  policy_arn = data.aws_iam_policy.ec2_ecr_full_access.arn
+}
 
 ## Publish static website
 resource "aws_iam_role" "deploy_website" {

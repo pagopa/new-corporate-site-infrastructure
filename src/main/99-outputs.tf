@@ -8,11 +8,11 @@ output "strapi_user_secret_key" {
   sensitive = true
 }
 
-/*
-output "deploy_ecs_role_arn" {
-  value = aws_iam_role.deploy_ecs.arn
+
+output "deploy_cms_role_arn" {
+  value = aws_iam_role.githubdeploy.arn
 }
-*/
+
 
 output "deploy_website_role_arn" {
   value = aws_iam_role.deploy_website.arn
@@ -69,6 +69,16 @@ output "db_cluster_master_password" {
 
 output "cms_service_url" {
   value = module.app-runner.service_url
+}
+
+## ECR ##
+
+output "ecr_repository_name" {
+  value = aws_ecr_repository.main.name
+}
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.main.repository_url
 }
 
 

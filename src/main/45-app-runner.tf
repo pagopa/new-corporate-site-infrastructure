@@ -18,6 +18,9 @@ resource "random_password" "jwt_secrets" {
   lower   = false
 }
 
+data "aws_iam_role" "app_runner_ecr_access_role" {
+  name = "AppRunnerECRAccessRole"
+}
 
 module "app-runner" {
   source  = "terraform-aws-modules/app-runner/aws"
@@ -60,12 +63,16 @@ module "app-runner" {
 
 
   source_configuration = {
+
+    authentication_configuration = {
+      access_role_arn = data.aws_iam_role.app_runner_ecr_access_role.arn
+    }
+
     auto_deployments_enabled = false
     image_repository = {
       image_configuration = {
-        port = 8000
+        port = 1337
         runtime_environment_variables = {
-          MY_VARIABLE       = "hello!"
           APP_KEYS          = join(", ", random_password.cms_api_keys.*.result)
           API_TOKEN_SALT    = random_password.cms_api_token_salt.result
           ADMIN_JWT_SECRET  = random_password.jwt_secrets[0].result
@@ -95,14 +102,14 @@ module "app-runner" {
         }
 
       }
-      image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = join(":", [aws_ecr_repository.main.repository_url, var.cms_image_version])
+      image_repository_type = "ECR"
     }
   }
 
   create_vpc_connector          = true
   vpc_connector_subnets         = module.vpc.private_subnets
-  vpc_connector_security_groups = [module.security_group.security_group_id]
+  vpc_connector_security_groups = [module.security_group.security_group_id, ]
   network_configuration = {
     ingress_configuration = {
       is_publicly_accessible = true
@@ -114,11 +121,18 @@ module "app-runner" {
 
   enable_observability_configuration = true
 
+  health_check_configuration = {
+    healthy_threshold   = 1
+    interval            = 5
+    path                = "/"
+    protocol            = "TCP"
+    timeout             = 2
+    unhealthy_threshold = 5
+  }
+
 }
 
-
 ## Allow access to rds
-
 resource "aws_security_group_rule" "app_runner_to_rds" {
   type                     = "ingress"
   from_port                = module.aurora_postgresql.cluster_port
@@ -126,5 +140,4 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
   protocol                 = "tcp"
   security_group_id        = module.aurora_postgresql.security_group_id
   source_security_group_id = module.security_group.security_group_id
-
 }
