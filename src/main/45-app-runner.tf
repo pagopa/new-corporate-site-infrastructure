@@ -46,8 +46,12 @@ module "app-runner" {
 
   instance_policy_statements = {
     GetParameter = {
-      actions   = ["ssm:GetParameter", "ssm:GetParameters"]
-      resources = [aws_ssm_parameter.database_password.arn]
+      actions = ["ssm:GetParameter", "ssm:GetParameters"]
+      resources = [
+        aws_ssm_parameter.database_password.arn,
+        format("arn:aws:ssm:%s:%s:parameter/GOOGLE_OAUTH*", var.aws_region, data.aws_caller_identity.current.account_id),
+        format("arn:aws:ssm:%s:%s:parameter/STRAPI*", var.aws_region, data.aws_caller_identity.current.account_id),
+      ]
     }
 
     PublishAssets = {
