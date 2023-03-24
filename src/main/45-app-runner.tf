@@ -155,4 +155,6 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
 resource "aws_cloudwatch_log_group" "app_runner_log_group" {
   name = "/aws/apprunner/${local.name}/${module.app-runner.service_id}/justatest"
 
+  retention_in_days = 180
+
 }
