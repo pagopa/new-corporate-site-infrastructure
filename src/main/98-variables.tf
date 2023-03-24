@@ -114,12 +114,6 @@ variable "ecr_keep_nr_images" {
   default     = 3
 }
 
-variable "log_group_policy_retention" {
-  type        = number
-  description = "Retention days policy related to a log group app runner"
-  default     = 30
-}
-
 ##############
 ## Database ##
 #############
