@@ -112,3 +112,8 @@ output "cms_acm_certificate_validation_options" {
 
 
 }
+
+## App runner
+output "app_runner_service_id" {
+  value = module.app-runner.service_id
+}
