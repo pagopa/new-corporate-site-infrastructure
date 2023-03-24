@@ -6,8 +6,6 @@ if [ ! -f "$APPRUNNER_LOG" ]; then
   service_name="$(terraform output | grep app_runner_service_arn | awk -F\/ '{ print $2 }')"
   service_id="$(terraform output | grep app_runner_service_id | awk -F\" '{ print $2 }')"
 
-  terraform output | grep app_runner_service_id | awk -F\" '{ print $2 }'
-
   cat <<EOF > $APPRUNNER_LOG
   resource "aws_cloudwatch_log_group" "service" {
     name = "/aws/apprunner/${service_name}/${service_id}/service"
