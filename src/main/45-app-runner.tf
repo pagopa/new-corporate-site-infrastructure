@@ -152,9 +152,14 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
   source_security_group_id = module.security_group.security_group_id
 }
 
-resource "aws_cloudwatch_log_group" "app_runner_log_group" {
-  name = "/aws/apprunner/${local.name}/${module.app-runner.service_id}/justatest"
+resource "aws_cloudwatch_log_group" "service" {
+  name = "/aws/apprunner/${local.name}/${module.app-runner.service_id}/service"
 
-  retention_in_days = 180
+  retention_in_days = var.log_group_policy_retention
+}
 
+resource "aws_cloudwatch_log_group" "application" {
+  name = "/aws/apprunner/${local.name}/${module.app-runner.service_id}/application"
+
+  retention_in_days = var.log_group_policy_retention
 }
