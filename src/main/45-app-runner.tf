@@ -1,3 +1,6 @@
+locals {
+  name = "cms-strapi"
+}
 resource "random_password" "cms_api_keys" {
   count   = 2
   length  = 7
@@ -26,7 +29,7 @@ module "app-runner" {
   source  = "terraform-aws-modules/app-runner/aws"
   version = "1.2.0"
 
-  service_name = "cms-strapi"
+  service_name = local.name
 
 
   auto_scaling_configurations = {
@@ -147,4 +150,9 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
   protocol                 = "tcp"
   security_group_id        = module.aurora_postgresql.security_group_id
   source_security_group_id = module.security_group.security_group_id
+}
+
+resource "aws_cloudwatch_log_group" "app_runner_log_group" {
+  name = "/aws/apprunner/${local.name}/${module.app-runner.service_id}/justatest"
+
 }
