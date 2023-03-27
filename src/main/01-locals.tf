@@ -6,7 +6,7 @@ locals {
   apprunner_service_name = "cms-strapi"
 
   apprunners_loggroups = [
-    join("/", ["/aws/apprunner", local.apprunner_service_name, module.app-runner.service_id, "applications"]),
+    join("/", ["/aws/apprunner", local.apprunner_service_name, module.app-runner.service_id, "application"]),
     join("/", ["/aws/apprunner", local.apprunner_service_name, module.app-runner.service_id, "service"]),
   ]
 
