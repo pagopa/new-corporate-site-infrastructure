@@ -1,6 +1,3 @@
-locals {
-  name = "cms-strapi"
-}
 resource "random_password" "cms_api_keys" {
   count   = 2
   length  = 7
@@ -29,7 +26,7 @@ module "app-runner" {
   source  = "terraform-aws-modules/app-runner/aws"
   version = "1.2.0"
 
-  service_name = local.name
+  service_name = local.apprunner_service_name
 
 
   auto_scaling_configurations = {
@@ -153,4 +150,15 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
 }
 
 
+
+resource "null_resource" "apprunner_loggroups_retention" {
+  count = length(local.apprunners_loggroups)
+  provisioner "local-exec" {
+    command = "aws logs put-retention-policy --log-group-name local.apprunners_loggroups[${count.index}] --retention-in-days ${var.log_apprunner_retention}"
+  }
+
+  depends_on = [
+    module.app-runner
+  ]
+}
 
