@@ -112,3 +112,8 @@ output "cms_acm_certificate_validation_options" {
 
 
 }
+
+## App runner
+output "app_runner_log_groups" {
+  value = local.apprunners_loggroups
+}

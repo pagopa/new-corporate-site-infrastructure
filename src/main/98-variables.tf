@@ -90,6 +90,12 @@ variable "logs_lambda_retention" {
   default     = 7
 }
 
+variable "log_apprunner_retention" {
+  type        = number
+  description = "Retention days policy related to a log group app runner"
+  default     = 7
+}
+
 variable "cms_github_repository" {
   type        = string
   description = "github repository with CMS codebase in the form organisation/repository."

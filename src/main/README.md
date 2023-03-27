@@ -11,6 +11,7 @@
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | = 4.58.0 |
 | <a name="provider_aws.us-east-1"></a> [aws.us-east-1](#provider\_aws.us-east-1) | = 4.58.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
@@ -63,6 +64,7 @@
 | [aws_ssm_parameter.database_password](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.strapi_iam_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.strapi_iam_access_secret](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
+| [null_resource.apprunner_loggroups_retention](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [random_integer.bucket_cms_media](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer) | resource |
 | [random_password.cms_api_keys](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.cms_api_token_salt](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
@@ -95,6 +97,7 @@
 | <a name="input_env_short"></a> [env\_short](#input\_env\_short) | Evnironment short. | `string` | `"d"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment | `string` | `"dev"` | no |
 | <a name="input_fe_github_repository"></a> [fe\_github\_repository](#input\_fe\_github\_repository) | Fe repository | `string` | `"pagopa/corporate-site-fe"` | no |
+| <a name="input_log_apprunner_retention"></a> [log\_apprunner\_retention](#input\_log\_apprunner\_retention) | Retention days policy related to a log group app runner | `number` | `7` | no |
 | <a name="input_logs_lambda_retention"></a> [logs\_lambda\_retention](#input\_logs\_lambda\_retention) | Days to retain the log stream. | `number` | `7` | no |
 | <a name="input_public_dns_zones"></a> [public\_dns\_zones](#input\_public\_dns\_zones) | Route53 Hosted Zone | `map(any)` | `null` | no |
 | <a name="input_single_nat_gateway"></a> [single\_nat\_gateway](#input\_single\_nat\_gateway) | Single natgateway instance. | `bool` | `true` | no |
@@ -108,6 +111,7 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
