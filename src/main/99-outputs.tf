@@ -114,10 +114,6 @@ output "cms_acm_certificate_validation_options" {
 }
 
 ## App runner
-output "app_runner_service_id" {
-  value = module.app-runner.service_id
-}
-
-output "app_runner_service_arn" {
-  value = module.app-runner.service_arn
+output "app_runner_log_groups" {
+  value = local.apprunners_loggroups
 }

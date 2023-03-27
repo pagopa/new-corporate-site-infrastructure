@@ -111,8 +111,7 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_app_runner_service_arn"></a> [app\_runner\_service\_arn](#output\_app\_runner\_service\_arn) | n/a |
-| <a name="output_app_runner_service_id"></a> [app\_runner\_service\_id](#output\_app\_runner\_service\_id) | # App runner |
+| <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
