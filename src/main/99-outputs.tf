@@ -101,15 +101,8 @@ output "cdn_preview_id" {
 
 
 ## TLS Certificate Validation oprions
-
-output "cms_acm_certificate_validation_options" {
-
-  value = { for dvo in aws_acm_certificate.cms.domain_validation_options : dvo.domain_name => {
-    name   = dvo.resource_record_name
-    record = dvo.resource_record_value
-    type   = dvo.resource_record_type
-  } }
-
+output "app_runner_custom_domain_validation_records" {
+  value = module.app-runner.custom_domain_association_certificate_validation_records
 
 }
 

@@ -33,7 +33,6 @@
 
 | Name | Type |
 |------|------|
-| [aws_acm_certificate.cms](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_cloudfront_distribution.media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
@@ -111,12 +110,12 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_app_runner_custom_domain_validation_records"></a> [app\_runner\_custom\_domain\_validation\_records](#output\_app\_runner\_custom\_domain\_validation\_records) | # TLS Certificate Validation oprions |
 | <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
 | <a name="output_cdn_website_id"></a> [cdn\_website\_id](#output\_cdn\_website\_id) | n/a |
-| <a name="output_cms_acm_certificate_validation_options"></a> [cms\_acm\_certificate\_validation\_options](#output\_cms\_acm\_certificate\_validation\_options) | n/a |
 | <a name="output_cms_service_url"></a> [cms\_service\_url](#output\_cms\_service\_url) | n/a |
 | <a name="output_db_cluster_database_name"></a> [db\_cluster\_database\_name](#output\_db\_cluster\_database\_name) | # Database |
 | <a name="output_db_cluster_endpoint"></a> [db\_cluster\_endpoint](#output\_db\_cluster\_endpoint) | n/a |

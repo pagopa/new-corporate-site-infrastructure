@@ -42,8 +42,6 @@ module "app-runner" {
     }
   }
 
-  # IAM instance profile permissions to access secrets
-
   instance_policy_statements = {
     GetParameter = {
       actions = ["ssm:GetParameter", "ssm:GetParameters"]
@@ -136,6 +134,10 @@ module "app-runner" {
     timeout             = 2
     unhealthy_threshold = 5
   }
+
+  # Custom domain
+  create_custom_domain_association = true
+  domain_name                      = format("cms.%s", keys(var.public_dns_zones)[0])
 
 }
 
