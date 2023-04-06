@@ -100,10 +100,19 @@ output "cdn_preview_id" {
 */
 
 
-## TLS Certificate Validation oprions
+## TLS Certificate Validation options
+### 
 output "app_runner_custom_domain_validation_records" {
   value = module.app-runner.custom_domain_association_certificate_validation_records
 
+}
+
+output "fe_validation_records" {
+  value = aws_acm_certificate.website.domain_validation_options
+}
+
+output "www_fe_validation_records" {
+  value = aws_acm_certificate.www_website.domain_validation_options
 }
 
 ## App runner

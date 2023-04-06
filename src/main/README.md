@@ -34,6 +34,7 @@
 | Name | Type |
 |------|------|
 | [aws_acm_certificate.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate.www_website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_cloudfront_distribution.media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_function.rewrite_uri](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_function) | resource |
@@ -110,7 +111,7 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_app_runner_custom_domain_validation_records"></a> [app\_runner\_custom\_domain\_validation\_records](#output\_app\_runner\_custom\_domain\_validation\_records) | # TLS Certificate Validation oprions |
+| <a name="output_app_runner_custom_domain_validation_records"></a> [app\_runner\_custom\_domain\_validation\_records](#output\_app\_runner\_custom\_domain\_validation\_records) | # TLS Certificate Validation options ## |
 | <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
@@ -126,9 +127,11 @@
 | <a name="output_deploy_website_role_arn"></a> [deploy\_website\_role\_arn](#output\_deploy\_website\_role\_arn) | n/a |
 | <a name="output_ecr_repository_name"></a> [ecr\_repository\_name](#output\_ecr\_repository\_name) | n/a |
 | <a name="output_ecr_repository_url"></a> [ecr\_repository\_url](#output\_ecr\_repository\_url) | n/a |
+| <a name="output_fe_validation_records"></a> [fe\_validation\_records](#output\_fe\_validation\_records) | n/a |
 | <a name="output_image_s3_bucket"></a> [image\_s3\_bucket](#output\_image\_s3\_bucket) | # Storage |
 | <a name="output_preview_s3_bucket"></a> [preview\_s3\_bucket](#output\_preview\_s3\_bucket) | n/a |
 | <a name="output_strapi_user_access_key"></a> [strapi\_user\_access\_key](#output\_strapi\_user\_access\_key) | # Iam |
 | <a name="output_strapi_user_secret_key"></a> [strapi\_user\_secret\_key](#output\_strapi\_user\_secret\_key) | n/a |
 | <a name="output_vpc_cidr"></a> [vpc\_cidr](#output\_vpc\_cidr) | Network |
 | <a name="output_website_s3_bucket"></a> [website\_s3\_bucket](#output\_website\_s3\_bucket) | n/a |
+| <a name="output_www_fe_validation_records"></a> [www\_fe\_validation\_records](#output\_www\_fe\_validation\_records) | n/a |
