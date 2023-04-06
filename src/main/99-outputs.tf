@@ -119,3 +119,14 @@ output "www_fe_validation_records" {
 output "app_runner_log_groups" {
   value = local.apprunners_loggroups
 }
+
+## ALB
+
+output "alb_dns_name" {
+  value = aws_lb.fe_alb.dns_name
+}
+
+# Global accellerator public ips
+output "global_accellerator_ips" {
+  value = aws_globalaccelerator_accelerator.alb_ga.ip_sets.*.ip_addresses
+}

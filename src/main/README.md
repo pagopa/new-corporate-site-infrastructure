@@ -18,6 +18,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_alb-sg"></a> [alb-sg](#module\_alb-sg) | terraform-aws-modules/security-group/aws | = 4.0 |
 | <a name="module_app-runner"></a> [app-runner](#module\_app-runner) | terraform-aws-modules/app-runner/aws | 1.2.0 |
 | <a name="module_aurora_postgresql"></a> [aurora\_postgresql](#module\_aurora\_postgresql) | terraform-aws-modules/rds-aurora/aws | 7.3.0 |
 | <a name="module_eventbridge"></a> [eventbridge](#module\_eventbridge) | terraform-aws-modules/eventbridge/aws | 1.17.3 |
@@ -35,6 +36,8 @@
 |------|------|
 | [aws_acm_certificate.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.www_website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
+| [aws_alb_listener.front_end](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/alb_listener) | resource |
+| [aws_alb_listener.http_to_https](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/alb_listener) | resource |
 | [aws_cloudfront_distribution.media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_function.rewrite_uri](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_function) | resource |
@@ -42,6 +45,9 @@
 | [aws_db_parameter_group.postgresql14](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/db_parameter_group) | resource |
 | [aws_ecr_lifecycle_policy.main](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.main](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ecr_repository) | resource |
+| [aws_globalaccelerator_accelerator.alb_ga](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/globalaccelerator_accelerator) | resource |
+| [aws_globalaccelerator_endpoint_group.alb_ga_endpoint](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/globalaccelerator_endpoint_group) | resource |
+| [aws_globalaccelerator_listener.alb_ga_listener](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/globalaccelerator_listener) | resource |
 | [aws_iam_access_key.strapi](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_access_key) | resource |
 | [aws_iam_policy.publish_s3](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.rdsstopstart](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_policy) | resource |
@@ -55,6 +61,7 @@
 | [aws_iam_role_policy_attachment.deploy_website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lambdastopstartrds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_user.strapi](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/iam_user) | resource |
+| [aws_lb.fe_alb](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/lb) | resource |
 | [aws_rds_cluster_parameter_group.postgresql14](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/rds_cluster_parameter_group) | resource |
 | [aws_s3_bucket.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
@@ -111,6 +118,7 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_alb_dns_name"></a> [alb\_dns\_name](#output\_alb\_dns\_name) | n/a |
 | <a name="output_app_runner_custom_domain_validation_records"></a> [app\_runner\_custom\_domain\_validation\_records](#output\_app\_runner\_custom\_domain\_validation\_records) | # TLS Certificate Validation options ## |
 | <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
@@ -128,6 +136,7 @@
 | <a name="output_ecr_repository_name"></a> [ecr\_repository\_name](#output\_ecr\_repository\_name) | n/a |
 | <a name="output_ecr_repository_url"></a> [ecr\_repository\_url](#output\_ecr\_repository\_url) | n/a |
 | <a name="output_fe_validation_records"></a> [fe\_validation\_records](#output\_fe\_validation\_records) | n/a |
+| <a name="output_global_accellerator_ips"></a> [global\_accellerator\_ips](#output\_global\_accellerator\_ips) | Global accellerator public ips |
 | <a name="output_image_s3_bucket"></a> [image\_s3\_bucket](#output\_image\_s3\_bucket) | # Storage |
 | <a name="output_preview_s3_bucket"></a> [preview\_s3\_bucket](#output\_preview\_s3\_bucket) | n/a |
 | <a name="output_strapi_user_access_key"></a> [strapi\_user\_access\_key](#output\_strapi\_user\_access\_key) | # Iam |
