@@ -11,7 +11,7 @@ public_dns_zones = {
 
 enable_cdn_https = true
 
-cms_image_version = "a50584f57bef10ed0f4f6598ec96f693f2c87dbe"
+cms_image_version = "a34ae2385e4a6b3d1e980090247ca8b6fecfb020"
 
 
 # Ref: https://pagopa.atlassian.net/wiki/spaces/DEVOPS/pages/132810155/Azure+-+Naming+Tagging+Convention#Tagging
