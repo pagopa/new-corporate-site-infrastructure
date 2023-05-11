@@ -70,7 +70,7 @@ module "app-runner" {
       access_role_arn = data.aws_iam_role.app_runner_ecr_access_role.arn
     }
 
-    auto_deployments_enabled = false
+    auto_deployments_enabled = var.auto_deployments_enabled
     image_repository = {
       image_configuration = {
         port = 1337

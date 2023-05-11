@@ -84,6 +84,13 @@ variable "enable_cdn_https" {
 ###############
 ## Computing ##
 ##############
+
+variable "auto_deployments_enabled" {
+  type        = bool
+  description = "App runner auto deploy enabled."
+  default     = false
+}
+
 variable "logs_lambda_retention" {
   type        = number
   description = "Days to retain the log stream."
