@@ -151,6 +151,15 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
   source_security_group_id = module.security_group.security_group_id
 }
 
+resource "aws_security_group_rule" "app_runner_to_https" {
+  type              = "egress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  security_group_id = module.aurora_postgresql.security_group_id
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
 
 
 resource "null_resource" "apprunner_loggroups_retention" {
