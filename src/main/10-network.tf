@@ -14,7 +14,7 @@ module "vpc" {
   public_subnet_suffix  = "public"
   database_subnets      = var.vpc_database_subnets_cidr
   enable_nat_gateway    = var.enable_nat_gateway
-  single_nat_gateway    = var.single_nat_gateway
+  single_nat_gateway    = false # var.single_nat_gateway
 
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -61,12 +61,14 @@ module "vpc_endpoints" {
       subnet_ids = module.vpc.private_subnets
       tags       = { Name = "cms-apprunner" }
     },
+    /*
     s3 = {
       service         = "s3"
       service_type    = "Gateway"
       route_table_ids = flatten([module.vpc.intra_route_table_ids, module.vpc.private_route_table_ids, module.vpc.public_route_table_ids])
       tags            = { Name = "s3-vpc-endpoint" }
     },
+        */
   }
 
 }
