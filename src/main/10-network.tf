@@ -61,7 +61,7 @@ module "vpc_endpoints" {
       subnet_ids = module.vpc.private_subnets
       tags       = { Name = "cms-apprunner" }
     },
-      /*
+    /*
     s3 = {
       service         = "s3"
       service_type    = "Gateway"
