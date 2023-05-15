@@ -61,6 +61,12 @@ module "vpc_endpoints" {
       subnet_ids = module.vpc.private_subnets
       tags       = { Name = "cms-apprunner" }
     },
+    s3 = {
+      service         = "s3"
+      service_type    = "Gateway"
+      route_table_ids = flatten([module.vpc.intra_route_table_ids, module.vpc.private_route_table_ids, module.vpc.public_route_table_ids])
+      tags            = { Name = "s3-vpc-endpoint" }
+    },
   }
 
 }
