@@ -67,6 +67,7 @@
 | [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_security_group_rule.app_runner_to_https](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.app_runner_to_rds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.database_password](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.strapi_iam_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
