@@ -196,8 +196,8 @@ resource "aws_cloudfront_distribution" "preview" {
 
   viewer_certificate {
     cloudfront_default_certificate = var.enable_cdn_https ? false : true
-    acm_certificate_arn            = var.enable_cdn_https ? aws_acm_certificate.www.arn : null
-    ssl_support_method             = "sni-only"
+    acm_certificate_arn            = var.enable_cdn_https ? aws_acm_certificate.preview.arn : null
+    ssl_support_method             = var.enable_cdn_https ? "sni-only" : null
   }
 
 }

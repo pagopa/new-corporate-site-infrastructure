@@ -34,6 +34,7 @@
 
 | Name | Type |
 |------|------|
+| [aws_acm_certificate.preview](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.www_website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/acm_certificate) | resource |
 | [aws_alb_listener.front_end](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/alb_listener) | resource |
@@ -142,6 +143,7 @@
 | <a name="output_fe_validation_records"></a> [fe\_validation\_records](#output\_fe\_validation\_records) | n/a |
 | <a name="output_global_accellerator_ips"></a> [global\_accellerator\_ips](#output\_global\_accellerator\_ips) | Global accellerator public ips |
 | <a name="output_image_s3_bucket"></a> [image\_s3\_bucket](#output\_image\_s3\_bucket) | # Storage |
+| <a name="output_preiview_fe_validation_records"></a> [preiview\_fe\_validation\_records](#output\_preiview\_fe\_validation\_records) | n/a |
 | <a name="output_preview_s3_bucket"></a> [preview\_s3\_bucket](#output\_preview\_s3\_bucket) | n/a |
 | <a name="output_strapi_user_access_key"></a> [strapi\_user\_access\_key](#output\_strapi\_user\_access\_key) | # Iam |
 | <a name="output_strapi_user_secret_key"></a> [strapi\_user\_secret\_key](#output\_strapi\_user\_secret\_key) | n/a |
