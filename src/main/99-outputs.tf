@@ -115,6 +115,10 @@ output "www_fe_validation_records" {
   value = aws_acm_certificate.www_website.domain_validation_options
 }
 
+output "preiview_fe_validation_records" {
+  value = aws_acm_certificate.preview.domain_validation_options
+}
+
 ## App runner
 output "app_runner_log_groups" {
   value = local.apprunners_loggroups
