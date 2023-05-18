@@ -11,7 +11,7 @@ public_dns_zones = {
 
 enable_cdn_https = true
 
-cms_image_version        = "5bf92374c6f030695b8678fd06b57ed8ef469ca3"
+cms_image_version        = "f157b141bf0f094aa56de2c726fe08f6eb563296"
 auto_deployments_enabled = true
 
 
