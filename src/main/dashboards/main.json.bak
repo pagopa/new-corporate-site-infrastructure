@@ -1,0 +1,344 @@
+{
+    "widgets": [
+        {
+            "height": 1,
+            "width": 24,
+            "y": 0,
+            "x": 0,
+            "type": "text",
+            "properties": {
+                "markdown": "## FE (CDN) \n"
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 1,
+            "x": 0,
+            "type": "metric",
+            "properties": {
+                "timezone": "UTC",
+                "region": "eu-central-1",
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/CloudFront", "Requests", "Region", "Global", "DistributionId", "E14V9TROQZIMNP", { "region": "us-east-1" } ]
+                ],
+                "title": "Requests"
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 1,
+            "x": 6,
+            "type": "metric",
+            "properties": {
+                "timezone": "UTC",
+                "region": "eu-central-1",
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/CloudFront", "4xxErrorRate", "Region", "Global", "DistributionId", "E14V9TROQZIMNP", { "region": "us-east-1" } ],
+                    [ ".", "5xxErrorRate", ".", ".", ".", ".", { "region": "us-east-1" } ]
+                ],
+                "title": "4xxErrorRate, 5xxErrorRate"
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 1,
+            "x": 12,
+            "type": "metric",
+            "properties": {
+                "timezone": "UTC",
+                "region": "eu-central-1",
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/CloudFront", "BytesDownloaded", "Region", "Global", "DistributionId", "E14V9TROQZIMNP", { "region": "us-east-1" } ]
+                ],
+                "title": "BytesDownloaded"
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 8,
+            "x": 6,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "AWS/S3", "NumberOfObjects", "BucketName", "cms-images-9817", "StorageType", "AllStorageTypes", { "stat": "Average", "region": "eu-central-1", "visible": false } ],
+                    [ "...", "terraform-backend-20230315111308849500000001", ".", ".", { "stat": "Average", "region": "eu-central-1", "visible": false } ],
+                    [ "...", "website-d-preview-8078", ".", ".", { "stat": "Average", "region": "eu-central-1" } ],
+                    [ "...", "website-d-website-2713", ".", ".", { "stat": "Average", "region": "eu-central-1" } ]
+                ],
+                "legend": {
+                    "position": "bottom"
+                },
+                "region": "eu-central-1",
+                "liveData": false,
+                "timezone": "UTC",
+                "title": "NumberOfObjects: Average",
+                "view": "timeSeries",
+                "stacked": false,
+                "period": 86400
+            }
+        },
+        {
+            "height": 1,
+            "width": 18,
+            "y": 7,
+            "x": 0,
+            "type": "text",
+            "properties": {
+                "markdown": "## S3 Buckets \n"
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 8,
+            "x": 12,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "AWS/S3", "BucketSizeBytes", "BucketName", "cms-images-9817", "StorageType", "StandardStorage", { "stat": "Average", "region": "eu-central-1", "visible": false } ],
+                    [ "...", "terraform-backend-20230315111308849500000001", ".", ".", { "stat": "Average", "region": "eu-central-1", "visible": false } ],
+                    [ "...", "website-d-preview-8078", ".", ".", { "stat": "Sum", "region": "eu-central-1" } ],
+                    [ "...", "website-d-website-2713", ".", ".", { "stat": "Sum", "region": "eu-central-1" } ]
+                ],
+                "legend": {
+                    "position": "bottom"
+                },
+                "region": "eu-central-1",
+                "liveData": false,
+                "timezone": "UTC",
+                "title": "Bucket Size Bytes: Average",
+                "view": "timeSeries",
+                "stacked": false,
+                "period": 86400
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 8,
+            "x": 0,
+            "type": "metric",
+            "properties": {
+                "metrics": [],
+                "legend": {
+                    "position": "bottom"
+                },
+                "region": "eu-central-1",
+                "liveData": false,
+                "timezone": "UTC",
+                "title": "AllRequests: Sum",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "height": 1,
+            "width": 24,
+            "y": 14,
+            "x": 0,
+            "type": "text",
+            "properties": {
+                "markdown": "## CMS (AppRunner) "
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 15,
+            "x": 0,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "AWS/AppRunner", "CPUUtilization", "ServiceName", "cms-strapi", "ServiceID", "6cd603ee49454abbac965ec9ec255157", { "region": "eu-central-1" } ],
+                    [ ".", "MemoryUtilization", ".", ".", ".", ".", { "region": "eu-central-1", "visible": false } ]
+                ],
+                "timezone": "UTC",
+                "region": "eu-central-1",
+                "view": "timeSeries",
+                "stacked": false,
+                "title": "CPU Utilization",
+                "period": 300,
+                "start": "-PT3H",
+                "end": "P0D",
+                "stat": "Average"
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 15,
+            "x": 6,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "AWS/AppRunner", "MemoryUtilization", "ServiceID", "6cd603ee49454abbac965ec9ec255157", "ServiceName", "cms-strapi" ]
+                ],
+                "period": 60,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "title": "Memory Utilization",
+                "yAxis": {
+                    "left": {
+                        "min": 0
+                    }
+                },
+                "timezone": "UTC",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 15,
+            "x": 12,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "AWS/AppRunner", "ActiveInstances", "ServiceID", "6cd603ee49454abbac965ec9ec255157", "ServiceName", "cms-strapi" ]
+                ],
+                "period": 60,
+                "region": "eu-central-1",
+                "stat": "Maximum",
+                "title": "Active instances",
+                "yAxis": {
+                    "left": {
+                        "min": 0
+                    }
+                },
+                "timezone": "UTC",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 15,
+            "x": 18,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "AWS/AppRunner", "5xxStatusResponses", "ServiceID", "6cd603ee49454abbac965ec9ec255157", "ServiceName", "cms-strapi" ]
+                ],
+                "period": 60,
+                "region": "eu-central-1",
+                "stat": "Sum",
+                "title": "HTTP 5xx response count",
+                "yAxis": {
+                    "left": {
+                        "min": 0
+                    }
+                },
+                "timezone": "UTC",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "height": 1,
+            "width": 24,
+            "y": 21,
+            "x": 0,
+            "type": "text",
+            "properties": {
+                "markdown": "## Database "
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 22,
+            "x": 0,
+            "type": "metric",
+            "properties": {
+                "period": 300,
+                "metrics": [
+                    [ "AWS/RDS", "ACUUtilization", "DBClusterIdentifier", "website-d-postgresql", { "label": "website-d-postgresql", "region": "eu-central-1" } ],
+                    [ "...", "DBInstanceIdentifier", "website-d-postgresql-one", { "label": "website-d-postgresql-one", "region": "eu-central-1" } ]
+                ],
+                "region": "eu-central-1",
+                "stat": "Average",
+                "title": "ACU Utilization",
+                "yAxis": {
+                    "left": {
+                        "min": 0
+                    }
+                },
+                "timezone": "UTC",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 22,
+            "x": 6,
+            "type": "metric",
+            "properties": {
+                "period": 300,
+                "metrics": [
+                    [ "AWS/RDS", "CPUUtilization", "DBClusterIdentifier", "website-d-postgresql", { "label": "website-d-postgresql", "region": "eu-central-1" } ],
+                    [ "...", "DBInstanceIdentifier", "website-d-postgresql-one", { "label": "website-d-postgresql-one", "region": "eu-central-1" } ]
+                ],
+                "region": "eu-central-1",
+                "stat": "Average",
+                "title": "CPU Utilization",
+                "yAxis": {
+                    "left": {
+                        "min": 0
+                    }
+                },
+                "timezone": "UTC",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 22,
+            "width": 6,
+            "height": 6,
+            "properties": {
+                "period": 300,
+                "metrics": [
+                    [ "AWS/RDS", "DatabaseConnections", "DBClusterIdentifier", "website-d-postgresql", { "label": "website-d-postgresql", "region": "eu-central-1" } ],
+                    [ "...", "DBInstanceIdentifier", "website-d-postgresql-one", { "label": "website-d-postgresql-one", "region": "eu-central-1" } ]
+                ],
+                "region": "eu-central-1",
+                "stat": "Average",
+                "title": "Database Connections",
+                "yAxis": {
+                    "left": {
+                        "min": 0
+                    }
+                },
+                "timezone": "UTC",
+                "view": "timeSeries",
+                "stacked": false
+            }
+        },
+        {
+            "type": "text",
+            "x": 18,
+            "y": 1,
+            "width": 6,
+            "height": 13,
+            "properties": {
+                "markdown": "## Useful links\n\n* [Home Page](https://dev.pagopa.it)\n* [Preview](http://preview.dev.pagopa.it/)\n* [CMS](https://cms.dev.pagopa.it/)\n---\n* [AWS Status Page](http://status.aws.amazon.com/)\n* [Status AWS Twitter](https://twitter.com/statusaws)\n* [Strapi](https://strapi.io/)\n* [Gatsbyjs](https://www.gatsbyjs.com/)\n---\n### GitHub\n* [Frontend](https://github.com/pagopa/corporate-site-fe)\n* [Backend(CMS)](https://github.com/pagopa/cms-corporate-backend)\n* [Cloud IAC](https://github.com/pagopa/new-corporate-site-infrastructure)\n"
+            }
+        }
+    ]
+}
