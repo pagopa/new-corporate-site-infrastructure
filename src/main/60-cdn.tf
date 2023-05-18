@@ -142,7 +142,7 @@ resource "aws_cloudfront_distribution" "website" {
 
 // preview 
 ## Static website CDN
-/*
+
 resource "aws_cloudfront_distribution" "preview" {
 
   origin {
@@ -201,4 +201,3 @@ resource "aws_cloudfront_distribution" "preview" {
   }
 
 }
-*/

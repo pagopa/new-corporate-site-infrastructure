@@ -39,6 +39,7 @@
 | [aws_alb_listener.front_end](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/alb_listener) | resource |
 | [aws_alb_listener.http_to_https](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/alb_listener) | resource |
 | [aws_cloudfront_distribution.media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
+| [aws_cloudfront_distribution.preview](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_function.rewrite_uri](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_function) | resource |
 | [aws_cloudfront_origin_access_identity.main](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_origin_access_identity) | resource |
