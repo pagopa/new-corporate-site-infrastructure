@@ -66,3 +66,20 @@ module "preview_bucket" {
     aws_cloudfront_origin_access_identity.main
   ]
 }
+
+data "aws_iam_policy_document" "s3_policy_preview" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${module.preview_bucket.arn}/*"]
+
+    principals {
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.main.iam_arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "preview" {
+  bucket = aws_s3_bucket.cms_media.id
+  policy = data.aws_iam_policy_document.s3_policy_preview.json
+}
