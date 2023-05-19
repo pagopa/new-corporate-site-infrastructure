@@ -80,6 +80,6 @@ data "aws_iam_policy_document" "s3_policy_preview" {
 }
 
 resource "aws_s3_bucket_policy" "preview" {
-  bucket = module.preview_bucket.bucket_name
+  bucket = module.preview_bucket.name
   policy = data.aws_iam_policy_document.s3_policy_preview.json
 }
