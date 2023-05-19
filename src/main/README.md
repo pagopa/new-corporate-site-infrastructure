@@ -68,6 +68,7 @@
 | [aws_rds_cluster_parameter_group.postgresql14](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/rds_cluster_parameter_group) | resource |
 | [aws_s3_bucket.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_policy.preview](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_versioning) | resource |
 | [aws_security_group_rule.app_runner_](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
@@ -85,6 +86,7 @@
 | [aws_iam_policy.admin_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy.ec2_ecr_full_access](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy) | data source |
 | [aws_iam_policy_document.s3_policy_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.s3_policy_preview](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_role.app_runner_ecr_access_role](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/iam_role) | data source |
 | [aws_rds_engine_version.postgresql](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/data-sources/rds_engine_version) | data source |
 
