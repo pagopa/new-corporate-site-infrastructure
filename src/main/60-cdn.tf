@@ -159,7 +159,7 @@ resource "aws_cloudfront_distribution" "preview" {
   comment             = "CloudFront distribution for the static website."
   default_root_object = "index.html"
 
-  # aliases = var.public_dns_zones == null ? [] : [format("www.%s", keys(var.public_dns_zones)[0]), ]
+  aliases = var.public_dns_zones == null ? [] : [format("preview.%s", keys(var.public_dns_zones)[0]), ]
 
   default_cache_behavior {
     # HTTPS requests we permit the distribution to serve
