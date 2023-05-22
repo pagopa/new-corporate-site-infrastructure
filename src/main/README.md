@@ -131,6 +131,8 @@
 | <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
+| <a name="output_cdn_preview_domain_name"></a> [cdn\_preview\_domain\_name](#output\_cdn\_preview\_domain\_name) | n/a |
+| <a name="output_cdn_preview_id"></a> [cdn\_preview\_id](#output\_cdn\_preview\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
 | <a name="output_cdn_website_id"></a> [cdn\_website\_id](#output\_cdn\_website\_id) | n/a |
 | <a name="output_cms_service_url"></a> [cms\_service\_url](#output\_cms\_service\_url) | n/a |

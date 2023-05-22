@@ -88,16 +88,14 @@ output "cdn_website_id" {
   value = aws_cloudfront_distribution.website.id
 }
 
-/*
 output "cdn_preview_domain_name" {
   value = aws_cloudfront_distribution.preview.domain_name
 }
 
-
 output "cdn_preview_id" {
   value = aws_cloudfront_distribution.preview.id
 }
-*/
+
 
 
 ## TLS Certificate Validation options
