@@ -22,6 +22,12 @@ data "aws_iam_role" "app_runner_ecr_access_role" {
   name = "AppRunnerECRAccessRole"
 }
 
+locals {
+  app_runner_image = join(":", [
+    var.cms_public_ecr_image != null ? var.cms_public_ecr_image : aws_ecr_repository.main.repository_url,
+  var.cms_image_version])
+}
+
 module "app-runner" {
   source  = "terraform-aws-modules/app-runner/aws"
   version = "1.2.0"
@@ -65,8 +71,7 @@ module "app-runner" {
 
 
   source_configuration = {
-
-    authentication_configuration = {
+    authentication_configuration = can(regex("public", local.app_runner_image)) ? {} : {
       access_role_arn = data.aws_iam_role.app_runner_ecr_access_role.arn
     }
 
@@ -84,12 +89,11 @@ module "app-runner" {
           DATABASE_PORT     = "5432"
           DATABASE_NAME     = module.aurora_postgresql.cluster_database_name
           DATABASE_USERNAME = module.aurora_postgresql.cluster_master_username
-          #TODO: try to set this as secret
-          DATABASE_SSL    = "false"
-          AWS_BUCKET_NAME = aws_s3_bucket.cms_media.id
-          AWS_REGION      = var.aws_region
-          CDN_BASE_URL    = format("https://%s", aws_cloudfront_distribution.media.domain_name)
-          BUCKET_PREFIX   = "media"
+          DATABASE_SSL      = "false"
+          AWS_BUCKET_NAME   = aws_s3_bucket.cms_media.id
+          AWS_REGION        = var.aws_region
+          CDN_BASE_URL      = format("https://%s", aws_cloudfront_distribution.media.domain_name)
+          BUCKET_PREFIX     = "media"
           GOOGLE_OAUTH_REDIRECT_URI = join("/", [
             format("https://cms.%s", keys(var.public_dns_zones)[0]),
             "strapi-plugin-sso", "google", "callback"]
@@ -107,8 +111,8 @@ module "app-runner" {
         }
 
       }
-      image_identifier      = join(":", [aws_ecr_repository.main.repository_url, var.cms_image_version])
-      image_repository_type = "ECR"
+      image_identifier      = local.app_runner_image
+      image_repository_type = can(regex("public", local.app_runner_image)) ? "ECR_PUBLIC" : "ECR"
     }
   }
 

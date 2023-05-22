@@ -156,10 +156,10 @@ resource "aws_cloudfront_distribution" "preview" {
 
   enabled             = true # enable CloudFront distribution
   is_ipv6_enabled     = true
-  comment             = "CloudFront distribution for the static website."
+  comment             = "CloudFront distribution for the static website preview"
   default_root_object = "index.html"
 
-  aliases = var.public_dns_zones == null ? [] : [format("preview.%s", keys(var.public_dns_zones)[0]), ]
+  aliases = var.enable_cdn_https && var.public_dns_zones != null ? [format("preview.%s", keys(var.public_dns_zones)[0]), ] : []
 
   default_cache_behavior {
     # HTTPS requests we permit the distribution to serve

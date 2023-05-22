@@ -115,6 +115,12 @@ variable "fe_github_repository" {
   default     = "pagopa/corporate-site-fe"
 }
 
+variable "cms_public_ecr_image" {
+  type        = string
+  description = "Image name: set this name when you don't have your custom image in ECR yet"
+  default     = null
+}
+
 variable "cms_image_version" {
   type        = string
   description = "Tag image version to deploy"

@@ -99,6 +99,7 @@
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region to create resources. Default Milan | `string` | `"eu-central-1"` | no |
 | <a name="input_cms_github_repository"></a> [cms\_github\_repository](#input\_cms\_github\_repository) | github repository with CMS codebase in the form organisation/repository. | `string` | `"pagopa/cms-corporate-backend"` | no |
 | <a name="input_cms_image_version"></a> [cms\_image\_version](#input\_cms\_image\_version) | Tag image version to deploy | `string` | `"latest"` | no |
+| <a name="input_cms_public_ecr_image"></a> [cms\_public\_ecr\_image](#input\_cms\_public\_ecr\_image) | Image name: set this name when you don't have your custom image in ECR yet | `string` | `null` | no |
 | <a name="input_db_backup_retention_period"></a> [db\_backup\_retention\_period](#input\_db\_backup\_retention\_period) | The days to retain backups for. Default 7 | `number` | `7` | no |
 | <a name="input_db_preferred_backup_window"></a> [db\_preferred\_backup\_window](#input\_db\_preferred\_backup\_window) | The daily time range during which automated backups are created. | `string` | `"17:00-19:00"` | no |
 | <a name="input_db_start_schedule_expression"></a> [db\_start\_schedule\_expression](#input\_db\_start\_schedule\_expression) | When the rds db aurora should start. | `string` | `"cron(0 8 ? * MON-FRI *)"` | no |
