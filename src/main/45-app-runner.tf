@@ -78,7 +78,7 @@ module "app-runner" {
     auto_deployments_enabled = var.auto_deployments_enabled
     image_repository = {
       image_configuration = {
-        port = 1337
+        port = local.strapi_container_port
         runtime_environment_variables = {
           APP_KEYS          = join(", ", random_password.cms_api_keys.*.result)
           API_TOKEN_SALT    = random_password.cms_api_token_salt.result
