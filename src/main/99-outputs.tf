@@ -132,3 +132,25 @@ output "alb_dns_name" {
 output "global_accellerator_ips" {
   value = aws_globalaccelerator_accelerator.alb_ga.ip_sets.*.ip_addresses
 }
+
+##  public endpoints
+
+locals {
+  cms_url = try(format("https://cms.%s", keys(var.public_dns_zones)[0]), module.app-runner.service_url)
+  website_url = try(format("https://%s", keys(var.public_dns_zones)[0]),
+  aws_cloudfront_distribution.website.domain_name)
+  preview_url = try(format("https://preview.%s", keys(var.public_dns_zones)[0]),
+  aws_cloudfront_distribution.preview.domain_name)
+}
+
+output "cms_url" {
+  value = local.cms_url
+}
+
+output "website_url" {
+  value = local.website_url
+}
+
+output "preview_url" {
+  value = local.preview_url
+}

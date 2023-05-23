@@ -106,7 +106,7 @@ module "app-runner" {
           AWS_ACCESS_SECRET          = "STRAPI_IAM_ACCESS_SECRET"
           GOOGLE_OAUTH_CLIENT_ID     = "GOOGLE_OAUTH_CLIENT_ID"
           GOOGLE_OAUTH_CLIENT_SECRET = "GOOGLE_OAUTH_CLIENT_SECRET"
-          #GITHUB_TOKEN               = "TODO"
+          GITHUB_TOKEN               = "GITHUB_TOKEN"
           #GITHUB_WEBHOOK             = "TODO"
         }
 
@@ -155,7 +155,17 @@ resource "aws_security_group_rule" "app_runner_to_rds" {
   source_security_group_id = module.security_group.security_group_id
 }
 
-resource "aws_security_group_rule" "app_runner_" {
+resource "aws_security_group_rule" "app_runner_out_rds" {
+  type                     = "egress"
+  from_port                = 5432
+  to_port                  = 5432
+  protocol                 = "tcp"
+  description              = "Allow traffic from App runner to Postgresql."
+  security_group_id        = module.security_group.security_group_id
+  source_security_group_id = module.aurora_postgresql.security_group_id
+}
+
+resource "aws_security_group_rule" "app_runner_out_https" {
   type              = "egress"
   from_port         = 443
   to_port           = 443

@@ -336,7 +336,7 @@
             "width": 6,
             "height": 13,
             "properties": {
-                "markdown": "## Useful links\n\n* [Home Page](https://dev.pagopa.it)\n* [Preview](http://preview.dev.pagopa.it/)\n* [CMS](https://cms.dev.pagopa.it/)\n---\n* [AWS Status Page](http://status.aws.amazon.com/)\n* [Status AWS Twitter](https://twitter.com/statusaws)\n* [Strapi](https://strapi.io/)\n* [Gatsbyjs](https://www.gatsbyjs.com/)\n---\n### GitHub\n* [Frontend](https://github.com/pagopa/corporate-site-fe)\n* [Backend(CMS)](https://github.com/pagopa/cms-corporate-backend)\n* [Cloud IAC](https://github.com/pagopa/new-corporate-site-infrastructure)\n"
+                "markdown": "## Useful links\n\n* [Home Page](${ website_url })\n* [Preview](${ preview_url })\n* [CMS](${ cms_url })\n---\n* [AWS Status Page](http://status.aws.amazon.com/)\n* [Status AWS Twitter](https://twitter.com/statusaws)\n* [Strapi](https://strapi.io/)\n* [Gatsbyjs](https://www.gatsbyjs.com/)\n---\n### GitHub\n* [Frontend](https://github.com/pagopa/corporate-site-fe)\n* [Backend(CMS)](https://github.com/pagopa/cms-corporate-backend)\n* [Cloud IAC](https://github.com/pagopa/new-corporate-site-infrastructure)\n"
             }
         }
     ]

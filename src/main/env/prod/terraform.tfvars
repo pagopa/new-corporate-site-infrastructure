@@ -12,6 +12,11 @@ enable_cdn_https = true
 #cms_public_ecr_image     = "public.ecr.aws/aws-containers/hello-app-runner"
 cms_image_version        = "f86f2495c25ea7f2a304a6a1c6c3b3fd2be628ad"
 auto_deployments_enabled = true
+log_apprunner_retention  = 30
+ecr_keep_nr_images       = 5
+
+## RDS
+db_backup_retention_period = 20
 
 
 # Ref: https://pagopa.atlassian.net/wiki/spaces/DEVOPS/pages/132810155/Azure+-+Naming+Tagging+Convention#Tagging
