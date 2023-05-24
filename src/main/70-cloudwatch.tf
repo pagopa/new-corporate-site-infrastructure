@@ -10,6 +10,9 @@ resource "aws_cloudwatch_dashboard" "main" {
       website_bucket              = module.website_bucket.name
       app_runner_service_id       = module.app-runner.service_id
       rds_cluster_id              = module.aurora_postgresql.cluster_id
+      website_url                 = local.website_url
+      preview_url                 = local.preview_url
+      cms_url                     = local.cms_url
     }
   )
 }

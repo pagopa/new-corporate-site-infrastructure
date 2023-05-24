@@ -88,16 +88,14 @@ output "cdn_website_id" {
   value = aws_cloudfront_distribution.website.id
 }
 
-/*
 output "cdn_preview_domain_name" {
   value = aws_cloudfront_distribution.preview.domain_name
 }
 
-
 output "cdn_preview_id" {
   value = aws_cloudfront_distribution.preview.id
 }
-*/
+
 
 
 ## TLS Certificate Validation options
@@ -133,4 +131,26 @@ output "alb_dns_name" {
 # Global accellerator public ips
 output "global_accellerator_ips" {
   value = aws_globalaccelerator_accelerator.alb_ga.ip_sets.*.ip_addresses
+}
+
+##  public endpoints
+
+locals {
+  cms_url = try(format("https://cms.%s", keys(var.public_dns_zones)[0]), module.app-runner.service_url)
+  website_url = try(format("https://%s", keys(var.public_dns_zones)[0]),
+  aws_cloudfront_distribution.website.domain_name)
+  preview_url = try(format("https://preview.%s", keys(var.public_dns_zones)[0]),
+  aws_cloudfront_distribution.preview.domain_name)
+}
+
+output "cms_url" {
+  value = local.cms_url
+}
+
+output "website_url" {
+  value = local.website_url
+}
+
+output "preview_url" {
+  value = local.preview_url
 }

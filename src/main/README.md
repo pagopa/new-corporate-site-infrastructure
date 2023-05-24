@@ -71,7 +71,8 @@
 | [aws_s3_bucket_policy.preview](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.cms_media](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/s3_bucket_versioning) | resource |
-| [aws_security_group_rule.app_runner_](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.app_runner_out_https](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.app_runner_out_rds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.app_runner_to_rds](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.database_password](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.strapi_iam_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ssm_parameter) | resource |
@@ -99,6 +100,7 @@
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region to create resources. Default Milan | `string` | `"eu-central-1"` | no |
 | <a name="input_cms_github_repository"></a> [cms\_github\_repository](#input\_cms\_github\_repository) | github repository with CMS codebase in the form organisation/repository. | `string` | `"pagopa/cms-corporate-backend"` | no |
 | <a name="input_cms_image_version"></a> [cms\_image\_version](#input\_cms\_image\_version) | Tag image version to deploy | `string` | `"latest"` | no |
+| <a name="input_cms_public_ecr_image"></a> [cms\_public\_ecr\_image](#input\_cms\_public\_ecr\_image) | Image name: set this name when you don't have your custom image in ECR yet | `string` | `null` | no |
 | <a name="input_db_backup_retention_period"></a> [db\_backup\_retention\_period](#input\_db\_backup\_retention\_period) | The days to retain backups for. Default 7 | `number` | `7` | no |
 | <a name="input_db_preferred_backup_window"></a> [db\_preferred\_backup\_window](#input\_db\_preferred\_backup\_window) | The daily time range during which automated backups are created. | `string` | `"17:00-19:00"` | no |
 | <a name="input_db_start_schedule_expression"></a> [db\_start\_schedule\_expression](#input\_db\_start\_schedule\_expression) | When the rds db aurora should start. | `string` | `"cron(0 8 ? * MON-FRI *)"` | no |
@@ -130,9 +132,12 @@
 | <a name="output_app_runner_log_groups"></a> [app\_runner\_log\_groups](#output\_app\_runner\_log\_groups) | # App runner |
 | <a name="output_cdn_media_domain_name"></a> [cdn\_media\_domain\_name](#output\_cdn\_media\_domain\_name) | # CDN |
 | <a name="output_cdn_media_id"></a> [cdn\_media\_id](#output\_cdn\_media\_id) | n/a |
+| <a name="output_cdn_preview_domain_name"></a> [cdn\_preview\_domain\_name](#output\_cdn\_preview\_domain\_name) | n/a |
+| <a name="output_cdn_preview_id"></a> [cdn\_preview\_id](#output\_cdn\_preview\_id) | n/a |
 | <a name="output_cdn_website_domain_name"></a> [cdn\_website\_domain\_name](#output\_cdn\_website\_domain\_name) | n/a |
 | <a name="output_cdn_website_id"></a> [cdn\_website\_id](#output\_cdn\_website\_id) | n/a |
 | <a name="output_cms_service_url"></a> [cms\_service\_url](#output\_cms\_service\_url) | n/a |
+| <a name="output_cms_url"></a> [cms\_url](#output\_cms\_url) | n/a |
 | <a name="output_db_cluster_database_name"></a> [db\_cluster\_database\_name](#output\_db\_cluster\_database\_name) | # Database |
 | <a name="output_db_cluster_endpoint"></a> [db\_cluster\_endpoint](#output\_db\_cluster\_endpoint) | n/a |
 | <a name="output_db_cluster_master_password"></a> [db\_cluster\_master\_password](#output\_db\_cluster\_master\_password) | n/a |
@@ -147,8 +152,10 @@
 | <a name="output_image_s3_bucket"></a> [image\_s3\_bucket](#output\_image\_s3\_bucket) | # Storage |
 | <a name="output_preiview_fe_validation_records"></a> [preiview\_fe\_validation\_records](#output\_preiview\_fe\_validation\_records) | n/a |
 | <a name="output_preview_s3_bucket"></a> [preview\_s3\_bucket](#output\_preview\_s3\_bucket) | n/a |
+| <a name="output_preview_url"></a> [preview\_url](#output\_preview\_url) | n/a |
 | <a name="output_strapi_user_access_key"></a> [strapi\_user\_access\_key](#output\_strapi\_user\_access\_key) | # Iam |
 | <a name="output_strapi_user_secret_key"></a> [strapi\_user\_secret\_key](#output\_strapi\_user\_secret\_key) | n/a |
 | <a name="output_vpc_cidr"></a> [vpc\_cidr](#output\_vpc\_cidr) | Network |
 | <a name="output_website_s3_bucket"></a> [website\_s3\_bucket](#output\_website\_s3\_bucket) | n/a |
+| <a name="output_website_url"></a> [website\_url](#output\_website\_url) | n/a |
 | <a name="output_www_fe_validation_records"></a> [www\_fe\_validation\_records](#output\_www\_fe\_validation\_records) | n/a |

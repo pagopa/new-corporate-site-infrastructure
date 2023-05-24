@@ -197,7 +197,7 @@ resource "aws_iam_policy" "publish_s3" {
         Effect = "Allow"
         Resource = [
           aws_cloudfront_distribution.website.arn,
-          # aws_cloudfront_distribution.preview.arn, TODO
+          aws_cloudfront_distribution.preview.arn,
         ]
       }
     ]
