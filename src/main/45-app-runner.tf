@@ -55,6 +55,7 @@ module "app-runner" {
         aws_ssm_parameter.database_password.arn,
         format("arn:aws:ssm:%s:%s:parameter/GOOGLE_OAUTH*", var.aws_region, data.aws_caller_identity.current.account_id),
         format("arn:aws:ssm:%s:%s:parameter/STRAPI*", var.aws_region, data.aws_caller_identity.current.account_id),
+        format("arn:aws:ssm:%s:%s:parameter/GITHUB*", var.aws_region, data.aws_caller_identity.current.account_id),
       ]
     }
 
