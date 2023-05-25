@@ -30,8 +30,11 @@ resource "aws_s3_bucket_public_access_block" "this" {
 data "aws_iam_policy_document" "this" {
   count = var.cloudfront_origin_access_identity_arn != null ? 1 : 0
   statement {
-    actions   = ["s3:GetObject"]
-    resources = ["${aws_s3_bucket.this.arn}/*"]
+    actions = ["s3:GetObject", "s3:ListBucket"]
+    resources = [
+      "${aws_s3_bucket.this.arn}",
+      "${aws_s3_bucket.this.arn}/*"
+    ]
 
     principals {
       type        = "AWS"

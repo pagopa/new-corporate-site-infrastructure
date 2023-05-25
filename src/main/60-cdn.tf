@@ -100,6 +100,12 @@ resource "aws_cloudfront_distribution" "website" {
 
   aliases = var.enable_cdn_https && var.public_dns_zones != [] ? [format("www.%s", keys(var.public_dns_zones)[0], )] : []
 
+  custom_error_response {
+    error_code         = 404
+    response_code      = 404
+    response_page_path = "/it/404.html"
+  }
+
   default_cache_behavior {
     # HTTPS requests we permit the distribution to serve
     allowed_methods  = ["GET", "HEAD", "OPTIONS", ]
@@ -126,7 +132,6 @@ resource "aws_cloudfront_distribution" "website" {
     }
 
   }
-
   restrictions {
     geo_restriction {
       restriction_type = "none"
