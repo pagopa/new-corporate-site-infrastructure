@@ -115,6 +115,12 @@ resource "aws_cloudfront_distribution" "website" {
       }
     }
 
+    custom_error_response = {
+
+      error_code         = 404
+      response_page_path = "/it/404.html"
+    }
+
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0     # min time for objects to live in the distribution cache
     default_ttl            = 3600  # default time for objects to live in the distribution cache
