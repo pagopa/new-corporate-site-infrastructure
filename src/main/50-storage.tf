@@ -31,8 +31,11 @@ resource "aws_s3_bucket_versioning" "cms_media" {
 
 data "aws_iam_policy_document" "s3_policy_media" {
   statement {
-    actions   = ["s3:GetObject"]
-    resources = ["${aws_s3_bucket.cms_media.arn}/*"]
+    actions = ["s3:GetObject", "S3:ListBucket"]
+    resources = [
+      "${aws_s3_bucket.cms_media.arn}",
+      "${aws_s3_bucket.cms_media.arn}/*"
+    ]
 
     principals {
       type        = "AWS"
@@ -47,9 +50,8 @@ resource "aws_s3_bucket_policy" "cloudfront" {
 }
 
 module "website_bucket" {
-  source        = "./modules/private_bucket"
-  bucket_prefix = format("%s-website", local.project)
-  #cloudfront_origin_access_identity_arn = null
+  source                                = "./modules/private_bucket"
+  bucket_prefix                         = format("%s-website", local.project)
   cloudfront_origin_access_identity_arn = aws_cloudfront_origin_access_identity.main.iam_arn
   depends_on = [
     aws_cloudfront_origin_access_identity.main
@@ -69,8 +71,11 @@ module "preview_bucket" {
 
 data "aws_iam_policy_document" "s3_policy_preview" {
   statement {
-    actions   = ["s3:GetObject"]
-    resources = ["${module.preview_bucket.arn}/*"]
+    actions = ["s3:GetObject", "s3:ListBucket"]
+    resources = [
+      "${module.preview_bucket.arn}",
+      "${module.preview_bucket.arn}/*"
+    ]
 
     principals {
       type        = "AWS"
