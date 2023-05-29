@@ -13,6 +13,12 @@ resource "aws_cloudfront_response_headers_policy" "websites" {
       override = true
       value    = "noindex"
     }
+
+    items {
+      header   = "Content-Security-Policy"
+      override = true
+      value    = ""
+    }
   }
 
 }
