@@ -10,7 +10,7 @@ public_dns_zones = {
 enable_cdn_https = true
 
 #cms_public_ecr_image     = "public.ecr.aws/aws-containers/hello-app-runner"
-cms_image_version        = "bdf9bd0ddd03ffc7a98b9fc80327355d7e7c5ebc"
+cms_image_version        = "6d07435209a77cf02d5f87586a59fbf54138e04b"
 auto_deployments_enabled = true
 log_apprunner_retention  = 30
 ecr_keep_nr_images       = 5
