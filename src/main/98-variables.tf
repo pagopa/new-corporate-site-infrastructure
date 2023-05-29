@@ -80,6 +80,17 @@ variable "enable_cdn_https" {
   default     = true
 }
 
+variable "cdn_custom_headers" {
+  type = list(object(
+    {
+      header   = string
+      override = bool
+      value    = string
+    }
+  ))
+  default = []
+}
+
 
 ###############
 ## Computing ##

@@ -10,6 +10,13 @@ public_dns_zones = {
 }
 
 enable_cdn_https = true
+cdn_custom_headers = [
+  {
+    header   = "X-Robots-Tag"
+    override = true
+    value    = "noindex"
+  }
+]
 
 cms_image_version        = "658b0b289970b74ca59d5d19cc2523811fa3a851"
 auto_deployments_enabled = true
