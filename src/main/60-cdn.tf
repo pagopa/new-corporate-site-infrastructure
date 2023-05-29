@@ -8,10 +8,14 @@ resource "aws_cloudfront_response_headers_policy" "websites" {
   comment = "Response custom headers for public static website"
 
   custom_headers_config {
-    items {
-      header   = "X-Robots-Tag"
-      override = true
-      value    = "noindex"
+
+    dynamic "items" {
+      for_each = var.env_short != "p" ? ["dummy"] : []
+      content {
+        header   = "X-Robots-Tag"
+        override = true
+        value    = "noindex"
+      }
     }
 
     items {
