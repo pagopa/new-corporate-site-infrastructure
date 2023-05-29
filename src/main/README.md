@@ -44,6 +44,7 @@
 | [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_function.rewrite_uri](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_function) | resource |
 | [aws_cloudfront_origin_access_identity.main](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_origin_access_identity) | resource |
+| [aws_cloudfront_response_headers_policy.websites](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudfront_response_headers_policy) | resource |
 | [aws_cloudwatch_dashboard.main](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/cloudwatch_dashboard) | resource |
 | [aws_db_parameter_group.postgresql14](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/db_parameter_group) | resource |
 | [aws_ecr_lifecycle_policy.main](https://registry.terraform.io/providers/hashicorp/aws/4.58.0/docs/resources/ecr_lifecycle_policy) | resource |

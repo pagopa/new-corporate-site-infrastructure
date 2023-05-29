@@ -3,6 +3,20 @@ resource "aws_cloudfront_origin_access_identity" "main" {
   comment = "Identity to access S3 bucket."
 }
 
+resource "aws_cloudfront_response_headers_policy" "websites" {
+  name    = "websites"
+  comment = "Response custom headers for public static website"
+
+  custom_headers_config {
+    items {
+      header   = "X-Robots-Tag"
+      override = true
+      value    = "noindex"
+    }
+  }
+
+}
+
 
 resource "aws_cloudfront_distribution" "media" {
 
@@ -108,9 +122,10 @@ resource "aws_cloudfront_distribution" "website" {
 
   default_cache_behavior {
     # HTTPS requests we permit the distribution to serve
-    allowed_methods  = ["GET", "HEAD", "OPTIONS", ]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = module.website_bucket.name
+    allowed_methods            = ["GET", "HEAD", "OPTIONS", ]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = module.website_bucket.name
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.websites.id
 
 
     forwarded_values {
@@ -168,9 +183,10 @@ resource "aws_cloudfront_distribution" "preview" {
 
   default_cache_behavior {
     # HTTPS requests we permit the distribution to serve
-    allowed_methods  = ["GET", "HEAD", "OPTIONS", ]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = module.preview_bucket.name
+    allowed_methods            = ["GET", "HEAD", "OPTIONS", ]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = module.preview_bucket.name
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.websites.id
 
 
     forwarded_values {
