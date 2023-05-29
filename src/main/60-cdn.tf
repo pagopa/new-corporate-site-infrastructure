@@ -7,25 +7,28 @@ resource "aws_cloudfront_response_headers_policy" "websites" {
   name    = "websites"
   comment = "Response custom headers for public static website"
 
-  custom_headers_config {
 
-    dynamic "items" {
-      for_each = var.env_short != "p" ? ["dummy"] : []
-      content {
-        header   = "X-Robots-Tag"
-        override = true
-        value    = "noindex"
+  dynamic "custom_headers_config" {
+    for_each = length(var.cdn_custom_headers) > 0 ? ["dummy"] : []
+    content {
+      dynamic "items" {
+        for_each = var.cdn_custom_headers
+        content {
+          header   = items.value.header
+          override = items.value.override
+          value    = items.value.value
+        }
       }
     }
 
-    items {
-      header   = "Content-Security-Policy"
-      override = true
-      value    = "script-src 'self' 'unsafe-inline' www.youtube.com https://*.cookielaw.org https://*.onetrust.com https://www.google-analytics.com https://cdn.matomo.cloud/pagopa.matomo.cloud https://pagopa.matomo.cloud https://recaptcha.net https://www.gstatic.com https://www.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' recaptcha.net; object-src 'none'; form-action 'self'; font-src data: 'self'; connect-src 'self' https://*.cookielaw.org https://*.onetrust.com https://www.google-analytics.com https://api.io.italia.it *.google-analytics.com; img-src data: 'self' recaptcha.net; frame-src https://www.google.com https://recaptcha.net https://www.youtube.com https://pagopa.applytojob.com;"
-
-    }
   }
 
+  security_headers_config {
+    content_security_policy {
+      content_security_policy = "script-src 'self' 'unsafe-inline' www.youtube.com https://*.cookielaw.org https://*.onetrust.com https://www.google-analytics.com https://cdn.matomo.cloud/pagopa.matomo.cloud https://pagopa.matomo.cloud https://recaptcha.net https://www.gstatic.com https://www.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' recaptcha.net; object-src 'none'; form-action 'self'; font-src data: 'self'; connect-src 'self' https://*.cookielaw.org https://*.onetrust.com https://www.google-analytics.com https://api.io.italia.it *.google-analytics.com; img-src data: 'self' recaptcha.net; frame-src https://www.google.com https://recaptcha.net https://www.youtube.com https://pagopa.applytojob.com"
+      override                = true
+    }
+  }
 }
 
 

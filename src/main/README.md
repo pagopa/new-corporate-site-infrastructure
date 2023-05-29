@@ -99,6 +99,7 @@
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | Corporate website. | `string` | `"website"` | no |
 | <a name="input_auto_deployments_enabled"></a> [auto\_deployments\_enabled](#input\_auto\_deployments\_enabled) | App runner auto deploy enabled. | `bool` | `false` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region to create resources. Default Milan | `string` | `"eu-central-1"` | no |
+| <a name="input_cdn_custom_headers"></a> [cdn\_custom\_headers](#input\_cdn\_custom\_headers) | n/a | <pre>list(object(<br>    {<br>      header   = string<br>      override = bool<br>      value    = string<br>    }<br>  ))</pre> | `[]` | no |
 | <a name="input_cms_github_repository"></a> [cms\_github\_repository](#input\_cms\_github\_repository) | github repository with CMS codebase in the form organisation/repository. | `string` | `"pagopa/cms-corporate-backend"` | no |
 | <a name="input_cms_image_version"></a> [cms\_image\_version](#input\_cms\_image\_version) | Tag image version to deploy | `string` | `"latest"` | no |
 | <a name="input_cms_public_ecr_image"></a> [cms\_public\_ecr\_image](#input\_cms\_public\_ecr\_image) | Image name: set this name when you don't have your custom image in ECR yet | `string` | `null` | no |
