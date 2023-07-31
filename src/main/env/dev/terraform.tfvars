@@ -18,7 +18,7 @@ cdn_custom_headers = [
   }
 ]
 
-cms_image_version        = "658b0b289970b74ca59d5d19cc2523811fa3a851"
+cms_image_version        = "b1e0c6c1e47e1f9b75681bbc3966f627e8b988dd"
 auto_deployments_enabled = true
 
 
