@@ -23,7 +23,7 @@ jobs:
   terraform:
     strategy:
       matrix:
-        environment: [dev]
+        environment: [dev, prod]
     name: "terraform-plan"
     runs-on: ubuntu-latest
     environment: ${{ matrix.environment }}
