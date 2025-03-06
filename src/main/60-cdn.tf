@@ -103,7 +103,9 @@ resource "aws_cloudfront_distribution" "media" {
     cloudfront_default_certificate = true # use this if you don't have certificate
     # acm_certificate_arn = aws_acm_certificate.cloudfront_cdn.arn
     # ssl_support_method = "sni-only"
+    #minimum_protocol_version = "TLSv1.2_2021"
   }
+
 
 
   # depends_on = [aws_acm_certificate.cloudfront_cdn]
@@ -171,6 +173,7 @@ resource "aws_cloudfront_distribution" "website" {
     cloudfront_default_certificate = var.enable_cdn_https ? false : true
     acm_certificate_arn            = var.enable_cdn_https ? aws_acm_certificate.www_website.arn : null
     ssl_support_method             = var.enable_cdn_https ? "sni-only" : null
+    minimum_protocol_version       = "TLSv1.2_2021"
   }
 }
 
@@ -233,6 +236,7 @@ resource "aws_cloudfront_distribution" "preview" {
     cloudfront_default_certificate = var.enable_cdn_https ? false : true
     acm_certificate_arn            = var.enable_cdn_https ? aws_acm_certificate.preview.arn : null
     ssl_support_method             = var.enable_cdn_https ? "sni-only" : null
+    minimum_protocol_version       = "TLSv1.2_2021"
   }
 
 }
